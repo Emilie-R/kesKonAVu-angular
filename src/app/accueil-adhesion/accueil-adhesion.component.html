@@ -1,0 +1,33 @@
+ <!--Formulaire Inscription -->
+ <div class="panel-formulaire-inscription">
+    <div id="message-erreur-holder">
+    </div>
+    <form>
+        <div class="form-group">
+            <label for="creationPseudo">Choisir un pseudo (6 caractères minimum) : </label>
+            <input id="creationPseudo" type="pseudo" class="form-control"
+                placeholder="mon pseudo" required autofocus minlength="6">
+        </div>
+        <div class="form-group">
+            <label for="creationEmail">Saisir votre email (facultatif): </label>
+            <input id="creationEmail" type="email" class="form-control" placeholder="email">
+        </div>
+        <div class="form-group">
+            <label for="creationPassword1">Votre mot de passe (6 caractères minimum)
+                :</label>
+            <input id="creationPassword1" type="password" class="form-control"
+                placeholder="mot de passe" required minlength="6">
+        </div>
+        <div class="form-group">
+            <label for="creationPassword1">Confirmer votre mot de passe :</label>
+            <input id="creationPassword2" type="password" class="form-control"
+                placeholder="mot de passe" required minlength="6">
+        </div>
+        <div class="form-group">
+            <div class="container d-flex justify-content-center">
+                <button id="boutonCreation" type="submit" class="btn">
+                    C'est parti !</button>
+            </div>
+        </div>
+    </form>
+</div>

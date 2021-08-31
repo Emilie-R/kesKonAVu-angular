@@ -1,0 +1,18 @@
+header {
+    background: rgb(176, 90, 194);
+    font-size: 20px;
+    color :white;
+}
+
+.header-application-titre {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+.header-application-titre-icone {
+    margin: 0rem 0.5rem;
+    font-size: 20px;
+}

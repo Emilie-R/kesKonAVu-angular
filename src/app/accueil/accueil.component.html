@@ -1,0 +1,36 @@
+<!--Contenu principal de la page-->
+<div class="main-page-accueil">
+
+    <!-- Petit texte d'accueil dans l'application -->
+    <section class="section-welcome">
+        <div class="container">
+            <h2>Bienvenu.e sur KesKonAVu ! </h2>
+            <p>Cinéma, télévision, plateformes,...
+                <br> pour que vous ne soyez plus jamais perdus dans la jungle des contenus média.
+            </p>
+        </div>
+    </section>
+
+    <!-- Formulaire pour identification/création de compte sur l'application -->
+    <section class="section-member-connexion">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-10 col-md-8 col-lg-6 col-xl-5">
+                    <div class="panel">
+                        <ul class="panel-titre">
+                            <li routerLinkActive="titre-actif">
+                                <a routerLink="accueil/connexion">Connectez-vous</a>
+                            </li>
+                            <li routerLinkActive="titre-actif">
+                                <a routerLink="accueil/inscription">Vous inscrire</a>
+                            </li>
+                        </ul>
+                        <div>
+                            <router-outlet></router-outlet>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

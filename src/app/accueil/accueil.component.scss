@@ -1,0 +1,43 @@
+
+.main-page-accueil {
+    font-family: 'Montserrat', sans-serif;
+    background: white;
+    color: black;
+}
+
+.section-welcome {
+    margin-top: 3rem;
+    margin-bottom:2rem;
+    text-align: center;
+}
+
+.section-welcome h2 {
+    font-weight: bolder;
+}
+
+.panel-titre {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding : 0.5rem 0rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.panel-titre a {
+    text-decoration: none;
+    color:#b3b3b3;
+}
+
+.titre-actif a, .panel-titre a:hover {
+    color: black;
+}
+
+.titre-actif, .panel-titre li:hover {
+    border-bottom : solid rgb(176, 90, 194);
+}

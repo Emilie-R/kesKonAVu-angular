@@ -7,6 +7,8 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { AccueilConnexionComponent } from './accueil-connexion/accueil-connexion.component';
 import { AccueilAdhesionComponent } from './accueil-adhesion/accueil-adhesion.component';
 import { RouterModule, Routes } from '@angular/router';
+import { SuiviComponent } from './suivi/suivi.component';
+import { SuiviMesFilmsComponent } from './suivi-mes-films/suivi-mes-films.component';
 
 const appRoutes: Routes = [
   {path: 'accueil/connexion', component: AccueilConnexionComponent},
@@ -19,7 +21,9 @@ const appRoutes: Routes = [
     AppComponent,
     AccueilComponent,
     AccueilConnexionComponent,
-    AccueilAdhesionComponent
+    AccueilAdhesionComponent,
+    SuiviComponent,
+    SuiviMesFilmsComponent
   ],
   imports: [
     BrowserModule,

@@ -18,15 +18,15 @@
                 <div class="col-10 col-md-8 col-lg-6 col-xl-5">
                     <div class="panel">
                         <ul class="panel-titre">
-                            <li (click)='onConnexion()'
-                                [class.titre-actif]='accueilConnexion'>Connectez-vous</li>
-                            <li (click)='onInscription()'
-                                [class.titre-actif]='accueilInscription'>Vous inscrire</li>
+                            <li (click)='onMenuConnexion()'
+                                [class.titre-actif]='isConnexion'>Connectez-vous</li>
+                            <li (click)='onMenuInscription()'
+                                [class.titre-actif]='isInscription'>Vous inscrire</li>
                         </ul>
                         <app-accueil-connexion
-                            *ngIf ='accueilConnexion'></app-accueil-connexion>
+                            *ngIf ='isConnexion'></app-accueil-connexion>
                         <app-accueil-inscription
-                            *ngIf = 'accueilInscription'></app-accueil-inscription>
+                            *ngIf = 'isInscription'></app-accueil-inscription>
                     </div>
                 </div>
             </div>

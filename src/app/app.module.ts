@@ -7,10 +7,14 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { AccueilConnexionComponent } from './accueil-connexion/accueil-connexion.component';
 import { AccueilInscriptionComponent } from './accueil-inscription/accueil-inscription.component';
 import { RouterModule, Routes } from '@angular/router';
+import { MesFilmsComponent } from './mes-films/mes-films.component';
+import { MesSeriesComponent } from './mes-series/mes-series.component';
 
 const appRoutes: Routes = [
-  {path: 'accueil', component: AccueilComponent},
-  {path: '', component: AccueilComponent}
+  {path:'accueil', component: AccueilComponent},
+  {path:'mes-films', component: MesFilmsComponent},
+  {path:'mes-series', component: MesSeriesComponent},
+  {path:'', component: AccueilComponent}
 ];
 
 @NgModule({
@@ -18,7 +22,9 @@ const appRoutes: Routes = [
     AppComponent,
     AccueilComponent,
     AccueilConnexionComponent,
-    AccueilInscriptionComponent
+    AccueilInscriptionComponent,
+    MesFilmsComponent,
+    MesSeriesComponent
   ],
   imports: [
     BrowserModule,

@@ -5,15 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { AccueilConnexionComponent } from './accueil-connexion/accueil-connexion.component';
-import { AccueilAdhesionComponent } from './accueil-adhesion/accueil-adhesion.component';
+import { AccueilInscriptionComponent } from './accueil-inscription/accueil-inscription.component';
 import { RouterModule, Routes } from '@angular/router';
-import { SuiviComponent } from './suivi/suivi.component';
-import { SuiviMesFilmsComponent } from './suivi-mes-films/suivi-mes-films.component';
 
 const appRoutes: Routes = [
-  {path: 'accueil/connexion', component: AccueilConnexionComponent},
-  {path: 'accueil/inscription', component: AccueilAdhesionComponent },
-  {path: '', component: AccueilConnexionComponent}
+  {path: 'accueil', component: AccueilComponent},
+  {path: '', component: AccueilComponent}
 ];
 
 @NgModule({
@@ -21,9 +18,7 @@ const appRoutes: Routes = [
     AppComponent,
     AccueilComponent,
     AccueilConnexionComponent,
-    AccueilAdhesionComponent,
-    SuiviComponent,
-    SuiviMesFilmsComponent
+    AccueilInscriptionComponent
   ],
   imports: [
     BrowserModule,

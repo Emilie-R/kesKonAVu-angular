@@ -29,15 +29,17 @@ ul {
     list-style-type: none;
 }
 
-.panel-titre a {
+.panel-titre {
     text-decoration: none;
     color:#b3b3b3;
 }
 
-.titre-actif a, .panel-titre a:hover {
-    color: black;
-}
-
 .titre-actif, .panel-titre li:hover {
     border-bottom : solid rgb(176, 90, 194);
+    color : black;
+    cursor: pointer;
+}
+
+.panel-formulaire-connexion, input {
+    font-size: 0.875rem;
 }

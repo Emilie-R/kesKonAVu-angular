@@ -18,16 +18,15 @@
                 <div class="col-10 col-md-8 col-lg-6 col-xl-5">
                     <div class="panel">
                         <ul class="panel-titre">
-                            <li routerLinkActive="titre-actif">
-                                <a routerLink="accueil/connexion">Connectez-vous</a>
-                            </li>
-                            <li routerLinkActive="titre-actif">
-                                <a routerLink="accueil/inscription">Vous inscrire</a>
-                            </li>
+                            <li (click)='onConnexion()'
+                                [class.titre-actif]='accueilConnexion'>Connectez-vous</li>
+                            <li (click)='onInscription()'
+                                [class.titre-actif]='accueilInscription'>Vous inscrire</li>
                         </ul>
-                        <div>
-                            <router-outlet></router-outlet>
-                        </div>
+                        <app-accueil-connexion
+                            *ngIf ='accueilConnexion'></app-accueil-connexion>
+                        <app-accueil-inscription
+                            *ngIf = 'accueilInscription'></app-accueil-inscription>
                     </div>
                 </div>
             </div>

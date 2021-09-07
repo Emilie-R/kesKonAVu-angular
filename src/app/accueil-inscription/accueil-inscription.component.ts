@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-accueil-inscription',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccueilInscriptionComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
+  }
+
+  onInscription() { 
+    
+    this.router.navigate(['mes-films']);
   }
 
 }

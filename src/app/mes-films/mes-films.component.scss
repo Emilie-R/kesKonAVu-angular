@@ -1,0 +1,243 @@
+main {
+    font-family: 'Montserrat', sans-serif;
+    border-bottom: 1px solid rgb(176, 90, 194);
+}
+
+.main-user-nav-holder {
+    position:sticky;
+    top:0px;
+    z-index: 1;
+    text-align: right;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgb(176, 90, 194);
+    background: white;
+}
+
+.main-user-nav {
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+    display: flex;
+    justify-content:flex-end;
+}
+
+.main-user-nav-item {
+    padding : 0.125rem;
+    margin-right: 1rem;
+    font-weight: 700;
+    color: #b3b3b3;
+    cursor: pointer;
+}
+
+.main-user-nav-item:hover, .main-user-nav-item-active {
+    border-bottom: 4px solid rgb(176, 90, 194);
+    color: black;
+}
+
+.main-user-content-holder {
+    font-family: 'Montserrat', sans-serif;
+    background: #272F36;
+    color:white;
+    padding: 2.5rem 0rem;
+}
+
+.user-content-title-holder {
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 2.125rem;
+    margin-bottom: 2.75rem;
+}
+
+.user-content-submenu-holder {
+    margin-bottom : 2rem;
+}
+
+a.user-content-submenu-item {
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    text-decoration: none;
+    font-weight: 700;
+    padding-bottom: 0.3rem;
+    margin: 1rem 3rem 1rem 0rem;
+    color: #b3b3b3;
+}
+
+a.user-content-submenu-item-active, a.user-content-submenu-item:hover, a.user-content-submenu-item:active {
+    border-bottom: 3px solid rgb(176, 90, 194);
+    color: white;
+}
+
+button.user-content-submenu-add {
+    text-transform: uppercase;
+    color :white;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.1rem;
+}
+
+.user-content-subtitle-holder {
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    color: #b3b3b3;
+    margin-bottom: 3rem;
+}
+
+.user-content-filters-holder {
+    margin-bottom: 2.5rem;
+}
+
+select#sortBy, select#filterByNote {
+    font-weight: 500;
+    font-size: 0.75rem;
+    margin-right:5rem;
+    padding : 0.5rem;
+    background: #272F36;
+    color: white;
+    width: 15rem;
+}
+
+.user-content-resource-card-add {
+    min-width: 165px;
+    max-width: 180px;
+    height:240px;
+    position: relative;
+    background: black;
+    text-transform: uppercase;
+    text-decoration:none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.user-content-resource-card-add-icon {
+    font-size: 2rem;
+    color:#b3b3b3;
+}
+
+.user-content-resource-card-add-texte {
+    font-size:0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1rem;
+}
+
+.card {
+    border: none;
+    background: #272F36;
+    min-width: 165px;
+    max-width: 190px;
+}
+
+.user-content-resource-card-note-holder {
+    position:absolute;
+    width:100%;
+    top:210px;
+    background: rgba(0,0,0,0.8);
+    opacity: 0.65;
+    font-size : 1.5rem;
+    color:#b3b3b3;
+    padding-top:0.2rem;
+    padding-bottom:0.2rem;
+}
+
+.card-note {
+    color:#b3b3b3;
+}
+
+.note-top, .card-note-top:hover {
+    color:greenyellow;
+}
+
+.note-moyen, .card-note-moyen:hover {
+    color:orange;
+}
+
+.note-bof, .card-note-bof:hover {
+    color:orangered;
+}
+
+.user-content-resource-card-actions {
+    position: absolute;
+    right:0;
+}
+
+.user-content-resource-card-button {
+    color:white;
+    font-size : 1.25rem;
+    background: rgba(0,0,0,0.8);
+    padding:0.25rem 0.5rem;
+}
+
+.user-content-resource-card-menu {
+    position: absolute;
+    z-index: 1;
+    right: -88px;
+    top:2.125rem;
+    width: 210px;
+    justify-content : center;
+}
+
+.user-content-resource-card-menu-arrow-holder {
+    color:white;
+    font-size: 1.5rem;
+    max-height: 13px;
+    display: flex;
+    justify-content : center;
+}
+
+.user-content-resource-card-menu-items {
+    padding : 0.5rem 0rem;
+    color: black;
+    background: white ;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+}
+
+.user-content-resource-card-menu-item {
+    padding : 0.25rem 0rem;
+    display: flex;
+    justify-content : left;
+    align-items: center;
+    font-size: 0.625rem;
+}
+
+.user-content-resource-card-menu-item:hover {
+    background-color: rgba(176, 90, 194, 0.5);
+}
+
+.user-content-resource-card-menu-item-icone {
+    padding: 0rem 0.75rem;
+    font-size: 0.75rem;
+}
+
+
+.user-content-resource-card-progression {
+    display: block;
+}
+
+.user-content-resource-card-subtexte {
+    margin-top: 0.5rem;
+    text-align: center;
+}
+
+.user-content-resource-card-subtexte-title {
+    margin-top: 0.3rem;
+    text-overflow: ellipsis;
+    font-weight:700;
+    font-size:1rem;
+}
+
+.user-content-resource-card-subtexte-episodes-restant {
+    margin-top: 0.3rem;
+    text-overflow: ellipsis;
+    color:#b3b3b3;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+}
+
+.objet-masque {
+    display: none;
+}
+.modal-title,  .modal-body p {
+    color: black;
+}

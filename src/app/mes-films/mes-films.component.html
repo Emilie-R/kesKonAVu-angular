@@ -1,0 +1,330 @@
+<!--Contenu principal de la page-->
+<main class="main-user-space">
+
+    <!--Barre de navigation dans les différentes vues-->
+    <div class="main-user-nav-holder">
+        <div class="container">
+            <ul class="main-user-nav">
+                <li class="main-user-nav-item main-user-nav-item-active">
+                    <i class="fa fa-film" aria-hidden="true"></i> Mes films
+                </li>
+                <li class="main-user-nav-item">
+                    <i class="fa fa-television" aria-hidden="true"></i> Mes séries
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!--Vue prinicpale de la page-->
+    <section class="main-user-content-holder">
+        <div class="container">
+
+            <!--Le titre de la vue-->
+            <div class="user-content-title-holder">
+                Mes films
+            </div>
+
+            <!--Sous-Menus disponibles VU/ AVOIR + Fonction ajouter un film/série-->
+            <div class="user-content-submenu-holder">
+                <div class="d-flex justify-content-between">
+                    <div class="user-content-submenu-items">
+                        <div class="d-flex justify-content-between">
+                            <div class="user-content-submenu-item-holder">
+                                <a href="ecran2-vue1.html"
+                                    class="user-content-submenu-item user-content-submenu-item-active">Mes envies
+                                    (5)</a>
+                            </div>
+                            <div class="user-content-submenu-item-holder">
+                                <a href="ecran2-vue2.html" class="user-content-submenu-item">Déjà vus (10)</a>
+                            </div>
+                        </div>
+                    </div>
+                    <button id="ressourceAddButton" class="btn btn-dark user-content-submenu-add" data-bs-toggle="modal"
+                        data-bs-target="#modal1">+ Ajouter des
+                        films</button>
+
+
+                </div>
+            </div>
+
+            <!--Texte lié à la sélection du sous-menu-->
+            <div class="user-content-subtitle-holder">
+                Tous les films que vous avez sélectionnés dans vos envies
+            </div>
+
+            <!--Bloc où apparaissent les filtres pour classer les ressources/ seulement pour vus-->
+            <div class="user-content-filters-holder objet-masque">
+                <div class="d-flex justify-content-start">
+                    <select id="sortBy">
+                        <option selected value="lastModification">Dernières modifications</option>
+                        <option value="noteAscending">Note croissante</option>
+                        <option value="noteDescending">Note décroissante</option>
+                    </select>
+
+                    <select id="filterByNote">
+                        <option value="all" selected>Toutes les notes</option>
+                        <option value="3">Top</option>
+                        <option value="1">Moyen</option>
+                        <option value="0">Bof</option>
+                    </select>
+                </div>
+            </div>
+
+            <!--Bloc où sont restitués les followUp-->
+            <div class="user-content-resource-cards">
+                <div class="container">
+                    <div
+                        class="row gx-4 gy-5 row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-6 row-cols-xxl-7">
+                        <div id="resourceAddCardCol" class="col objet-masque">
+                            <div id="resourceAddCard" class="user-content-resource-card-add">
+                                <div class="user-content-resource-card-add-icon">
+                                    <i class="fas fa-plus-square"></i>
+                                </div>
+                                <div class="user-content-resource-card-add-texte">
+                                    Ajouter des<br>films
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="user-content-resource-card">
+                                <div class="card">
+                                    <!--Poster de la ressource sur la card-->
+                                    <img class="card-img"
+                                        src="https://fr.web.img6.acsta.net/c_180_240/pictures/21/01/28/17/39/5041772.jpg"
+                                        alt="Descriptif image" width="180" height="240">
+
+                                    <!--Bouton pour accéder aux fonctions sur la ressource = popover à faire -->
+                                    <div class="user-content-resource-card-actions">
+                                        <a href="#">
+                                            <div class="user-content-resource-card-button">
+                                                <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="user-content-resource-card-menu">
+                                                <div class="user-content-resource-card-menu-arrow-holder">
+                                                    <div class="user-content-resource-card-menu-arrow">
+                                                        <i class="fa fa-sort-asc" aria-hidden="true"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="user-content-resource-card-menu-items">
+                                                    <div id="detailsRessource"
+                                                        class="user-content-resource-card-menu-item">
+                                                        <div class="user-content-resource-card-menu-item-icone">
+                                                            <i class="fa fa-search-plus" aria-hidden="true"></i>
+                                                        </div>
+                                                        <div class="user-content-resource-card-menu-item-texte">
+                                                            Plus de détails
+                                                        </div>
+                                                    </div>
+                                                    <div id="saisirProgression"
+                                                        class="user-content-resource-card-menu-item objet-masque">
+                                                        <div class="user-content-resource-card-menu-item-icone">
+                                                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                                                        </div>
+                                                        <div class="user-content-resource-card-menu-item-texte">
+                                                            Modifier ma progression
+                                                        </div>
+                                                    </div>
+                                                    <div id="saisirVuSuivi"
+                                                        class="user-content-resource-card-menu-item">
+                                                        <div class="user-content-resource-card-menu-item-icone">
+                                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                                        </div>
+                                                        <div class="user-content-resource-card-menu-item-texte">
+                                                            Je l'ai vu !
+                                                        </div>
+                                                    </div>
+                                                    <div id="supprimerRessource"
+                                                        class="user-content-resource-card-menu-item">
+                                                        <div class="user-content-resource-card-menu-item-icone">
+                                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                                        </div>
+                                                        <div class="user-content-resource-card-menu-item-texte">
+                                                            Ne plus suivre
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    <!--Bloc avec notes en superposition sur l'image-->
+                                    <div class="user-content-resource-card-note-holder objet-masque">
+                                        <div class="container-fluid d-flex justify-content-between">
+                                            <i class="fas fa-meh card-note-bof "></i>
+                                            <i class="fas fa-smile card-note-moyen"></i>
+                                            <i class="fas fa-grin-stars card-note-top note-top"></i>
+                                        </div>
+
+                                    </div>
+
+                                    <!--Bloc avec la progression utilisateur-->
+                                    <div class="user-content-resource-card-progression objet-masque">
+                                        <div class="progress" style="height: 0.25rem;">
+                                            <div class="progress-bar bg-info" role="progressbar" style="width: 25%"
+                                                aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </div>
+
+                                    <!--Bloc avec titre du film/série et episodes restants-->
+                                    <div class="user-content-resource-card-subtexte">
+                                        <div class="user-content-resource-card-subtexte-title">
+                                            Lupin
+                                        </div>
+                                        <div class="user-content-resource-card-subtexte-episodes-restant objet-masque">
+                                            35 épisodes à voir
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="user-content-resource-card">
+                                <div class="card">
+                                    <!--Poster de la ressource sur la card-->
+                                    <img class="card-img"
+                                        src="https://fr.web.img6.acsta.net/c_180_240/pictures/21/05/12/16/22/0714838.jpg"
+                                        alt="Descriptif image" width="180" height="240">
+
+                                    <!--Bouton pour accéder aux fonctions sur la ressource = popover à faire -->
+                                    <div class="user-content-resource-card-actions">
+                                        <a href="#">
+                                            <div class="user-content-resource-card-button">
+                                                <i class="fas fa-ellipsis-h"></i>
+                                            </div>
+                                            <div class="user-content-resource-card-menu">
+                                                <div class="user-content-resource-card-menu-arrow-holder">
+                                                    <div class="user-content-resource-card-menu-arrow">
+                                                        <i class="fa fa-sort-asc" aria-hidden="true"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="user-content-resource-card-menu-items">
+                                                    <div id="detailsRessource"
+                                                        class="user-content-resource-card-menu-item">
+                                                        <div class="user-content-resource-card-menu-item-icone">
+                                                            <i class="fas fa-search"></i>
+                                                        </div>
+                                                        <div class="user-content-resource-card-menu-item-texte">
+                                                            Plus de détails
+                                                        </div>
+                                                    </div>
+                                                    <div id="saisirProgression"
+                                                        class="user-content-resource-card-menu-item objet-masque">
+                                                        <div class="user-content-resource-card-menu-item-icone">
+                                                            <i class="fas fa-edit"></i>
+                                                        </div>
+                                                        <div class="user-content-resource-card-menu-item-texte">
+                                                            Modifier ma progression
+                                                        </div>
+                                                    </div>
+                                                    <div id="saisirVuSuivi"
+                                                        class="user-content-resource-card-menu-item">
+                                                        <div class="user-content-resource-card-menu-item-icone">
+                                                            <i class="fas fa-eye"></i>
+                                                        </div>
+                                                        <div class="user-content-resource-card-menu-item-texte">
+                                                            Je l'ai vu !
+                                                        </div>
+                                                    </div>
+                                                    <div id="supprimerRessource"
+                                                        class="user-content-resource-card-menu-item">
+                                                        <div class="user-content-resource-card-menu-item-icone">
+                                                            <i class="fas fa-trash-alt"></i>
+                                                        </div>
+                                                        <div class="user-content-resource-card-menu-item-texte">
+                                                            Ne plus suivre
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    <!--Bloc avec notes en superposition sur l'image-->
+                                    <div class="user-content-resource-card-note-holder objet-masque">
+                                        <div class="container-fluid d-flex justify-content-between">
+                                            <i class="fas fa-meh card-note-bof "></i>
+                                            <i class="fas fa-smile card-note-moyen note-moyen"></i>
+                                            <i class="fas fa-grin-stars card-note-top "></i>
+                                        </div>
+
+                                    </div>
+
+                                    <!--Bloc avec la progression utilisateur-->
+                                    <div class="user-content-resource-card-progression objet-masque">
+                                        <div class="progress" style="height: 0.25rem;">
+                                            <div class="progress-bar bg-info" role="progressbar" style="width: 80%"
+                                                aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </div>
+
+                                    <!--Bloc avec titre du film/série et episodes restants-->
+                                    <div class="user-content-resource-card-subtexte">
+                                        <div class="user-content-resource-card-subtexte-title">
+                                            Loki
+                                        </div>
+                                        <div class="user-content-resource-card-subtexte-episodes-restant objet-masque">
+                                            1 épisode à voir
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="p-3 border bg-light">Custom column padding</div>
+                        </div>
+                        <div class="col">
+                            <div class="p-3 border bg-light">Custom column padding</div>
+                        </div>
+                        <div class="col">
+                            <div class="p-3 border bg-light">Custom column padding</div>
+                        </div>
+                        <div class="col">
+                            <div class="p-3 border bg-light">Custom column padding</div>
+                        </div>
+                        <div class="col">
+                            <div class="p-3 border bg-light">Custom column padding</div>
+                        </div>
+                        <div class="col">
+                            <div class="p-3 border bg-light">Custom column padding</div>
+                        </div>
+                        <div class="col">
+                            <div class="p-3 border bg-light">Custom column padding</div>
+                        </div>
+                        <div class="col">
+                            <div class="p-3 border bg-light">Custom column padding</div>
+                        </div>
+                        <div class="col">
+                            <div class="p-3 border bg-light">Custom column padding</div>
+                        </div>
+                        <div class="col">
+                            <div class="p-3 border bg-light">Custom column padding</div>
+                        </div>
+                        <div class="col">
+                            <div class="p-3 border bg-light">Custom column padding</div>
+                        </div>
+                        <div class="col">
+                            <div class="p-3 border bg-light">Custom column padding</div>
+                        </div>
+                        <div class="col">
+                            <div class="p-3 border bg-light">Custom column padding</div>
+                        </div>
+                        <div class="col">
+                            <div class="p-3 border bg-light">Custom column padding</div>
+                        </div>
+                        <div class="col">
+                            <div class="p-3 border bg-light">Custom column padding</div>
+                        </div>
+                        <div class="col">
+                            <div class="p-3 border bg-light">Custom column padding</div>
+                        </div>
+                        <div class="col">
+                            <div class="p-3 border bg-light">Custom column padding</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</main>

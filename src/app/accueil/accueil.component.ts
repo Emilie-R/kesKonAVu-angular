@@ -8,23 +8,23 @@ import { Component, OnInit } from '@angular/core';
 
 export class AccueilComponent implements OnInit {
 
-  accueilInscription !: boolean;
-  accueilConnexion !: boolean;
+  isInscription!: Boolean;
+  isConnexion!:Boolean;
 
   constructor() { }
 
   ngOnInit(): void {
-    this.onConnexion();
+    this.onMenuConnexion();
   }
 
-  onConnexion() {
-    this.accueilInscription = false;
-    this.accueilConnexion = true;
+  onMenuConnexion() {
+    this.isInscription = false;
+    this.isConnexion = true;
   }
 
-  onInscription(){
-    this.accueilInscription = true;
-    this.accueilConnexion = false;
+  onMenuInscription(){
+    this.isInscription = true;
+    this.isConnexion = false;
   }
 
 }

@@ -1,0 +1,27 @@
+<div class="container main-home">
+    <!--Texte d'accueil sur l'application-->
+    <section class="home-welcome">
+        <h2>Bienvenu.e sur KesKonAVu !</h2>
+        <p>Cinéma, télévision, plateformes,...
+            <br> pour que vous ne soyez plus jamais perdus dans la jungle des contenus média.
+        </p>
+    </section>
+
+    <!--Section contenant soit le formulaire de connexion/ formulaire d'inscription-->
+    <section class="home-forms">
+        <!-- les liens de navigation entre connexion/ inscription -->
+        <ul class="home-list-links">
+            <li (click)="onLoginMenu()"
+                [class.home-link-active]= 'toLogin'>Se Connecter</li>
+            <li (click)="onRegisterMenu()"
+                [class.home-link-active]="!toLogin">S'inscrire</li>
+        </ul>
+        <!-- Le formulaire correspondant-->
+        <div>
+            <!--Formulaire de login-->
+            <app-login *ngIf="toLogin"></app-login>
+            <!--Formulaire d'inscription-->
+            <app-register *ngIf="!toLogin"></app-register>
+        </div>
+    </section>
+</div>

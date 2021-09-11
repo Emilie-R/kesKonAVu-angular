@@ -1,0 +1,46 @@
+<mat-card>
+    <mat-card-content>
+        <form (submit)="onRegisterSubmit()" [formGroup]="registerForm"
+                class="registerForm">
+            
+            <!-- Champ email -->
+            <mat-form-field>
+                <mat-label>Saisir votre email (facultatif) : </mat-label>
+                <input matInput formControlName="email" type="email">
+                <mat-error *ngIf="registerForm.controls.email.invalid">{{ getEmailErrorMessage() }}</mat-error> 
+            </mat-form-field>
+
+            <div class="field-spacer"></div>
+
+            <!-- Champ Pseudo -->
+            <mat-form-field>
+                <mat-label>Choisir un pseudo (6 caractères minimum): </mat-label>
+                <input matInput formControlName="pseudo" type="text">
+                <mat-error *ngIf="registerForm.controls.pseudo.invalid">{{ getPseudoErrorMessage() }}</mat-error>
+            </mat-form-field>
+            
+            <div class="field-spacer"></div>
+
+            <!-- Mot de passe -->
+            <mat-form-field>
+                <mat-label>Choisir un mot de passe (6 caractères minimum): </mat-label>
+                <input matInput formControlName="password" type="password"> 
+                <mat-error *ngIf="registerForm.controls.password.invalid">{{ getPasswordErrorMessage() }}</mat-error>
+            </mat-form-field>
+
+            <div class="field-spacer"></div>
+            
+            <!-- Confirmation mot de passe -->
+            <mat-form-field>
+                <mat-label>Confirmer le mot de passe : </mat-label>
+                <input matInput formControlName="confirmPassword" type="password"> 
+                <mat-error *ngIf="registerForm.controls.confirmPassword.invalid">{{ getConfirmPasswordErrorMessage() }}</mat-error>
+            </mat-form-field>
+
+            <div class="field-spacer"></div>
+            
+            <!-- Bouton du formulaire -->
+            <button mat-raised-button class="registerFormButton"> C'est parti ! </button>
+        </form>    
+    </mat-card-content>
+</mat-card>

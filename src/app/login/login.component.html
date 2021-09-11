@@ -1,0 +1,27 @@
+<mat-card>
+    <mat-card-content>
+        <form (submit)="onLoginSubmit()" [formGroup]="loginForm"
+            class="loginForm">
+            <!-- Champ Pseudo -->
+            <mat-form-field>
+                <mat-label>Votre pseudo :</mat-label>
+                <input matInput formControlName="pseudo" type="text">
+                <mat-error *ngIf="loginForm.controls.pseudo.invalid">{{ getPseudoErrorMessage() }}</mat-error>
+            </mat-form-field>
+
+            <div class="field-spacer"></div>
+
+            <!-- Mot de passe -->
+            <mat-form-field>
+                <mat-label>Votre mot de passe :</mat-label>
+                <input matInput formControlName="password" type="password">
+                <mat-error *ngIf="loginForm.controls.password.invalid">{{ getPasswordErrorMessage() }}</mat-error>
+            </mat-form-field>
+
+            <div class="field-spacer"></div>
+
+            <!-- Bouton du formulaire -->
+            <button mat-raised-button class="loginFormButton"> Se connecter </button>
+                    </form>
+    </mat-card-content>
+</mat-card>

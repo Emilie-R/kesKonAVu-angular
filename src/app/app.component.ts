@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MemberModel } from 'src/models/member.model';
+import { MemberService } from './services/member.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'keskonavu-front';
+
+  loggedMember: any;
+  isLog: boolean = false;
+
+  constructor(public memberService: MemberService) { }
+
+  ngOnInit() {
+    this.memberService.loggedMember$.subscribe(
+      (member) => {
+        this.loggedMember = new MemberModel(member);
+      })
+  }
+
 }

@@ -1,0 +1,19 @@
+form.loginForm {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Montserrat', sans-serif;
+}
+
+form.loginForm button, form.loginForm input {
+    font-family: 'Montserrat', sans-serif;
+}
+
+form.loginForm button{
+    background: rgb(176, 90, 194);
+    color: white;
+    font-size: 1rem;
+}
+
+form.loginForm div.field-spacer {
+    height: 10px;
+}

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { MemberModel } from 'src/models/member.model';
+import { MemberModel } from '../models/member.model';
 import { MemberService } from '../services/member.service';
 
 @Component({
@@ -15,7 +16,8 @@ export class RegisterComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
     private memberService: MemberService,
-    private route: Router) { }
+    private route: Router,
+    private snackBar : MatSnackBar) { }
 
   ngOnInit(): void {
 
@@ -51,10 +53,17 @@ export class RegisterComponent implements OnInit {
             // Gestion des erreurs en cas de problème sur la création du member
             switch (error.status) {
               case 409:
-                alert("Pseudo et mot de passe incorrects");
+                this.snackBar.open("Ce pseudo est déjà attribué.", "Fermer", {
+                  horizontalPosition: 'center',
+                  verticalPosition: 'top'
+                });
                 break;
-
               default:
+                  this.snackBar.open('Erreur serveur', 'Fermer' , {
+                  horizontalPosition: 'center',
+                  verticalPosition: 'top',
+                  duration : 5000
+                });
                 break;
             }
           })
@@ -65,7 +74,7 @@ export class RegisterComponent implements OnInit {
     if (this.registerForm.controls.email.hasError('email')) {
       return "Renseigner un email valide";
     };
-    return;
+    return "";
   }
 
   getPseudoErrorMessage() {
@@ -82,7 +91,7 @@ export class RegisterComponent implements OnInit {
     if (this.registerForm.controls.password.hasError('minlength')) {
       return "Le mot de passe doit contenir au moins 6 caractères";
     }
-    return;
+    return "";
   }
 
   getConfirmPasswordErrorMessage() {
@@ -95,7 +104,7 @@ export class RegisterComponent implements OnInit {
     if (this.registerForm.controls.confirmPassword.hasError('mustMatch')) {
       return "Les mots de passe ne sont pas identiques";
     }
-    return;
+    return "";
   }
 }
 

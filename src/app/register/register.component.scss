@@ -4,12 +4,18 @@ form.registerForm {
     font-family: 'Montserrat', sans-serif;
 }
 
-form.registerForm button, form.registerForm input {
+form.registerForm button, form.registerForm input, form.registerForm mat-form-field {
     font-family: 'Montserrat', sans-serif;
 }
 
 form.registerForm button{
     background: rgb(176, 90, 194);
+    color: white;
+    font-size: 1rem;
+}
+
+form.registerForm button:disabled{
+    background: #c8c8c8;
     color: white;
     font-size: 1rem;
 }

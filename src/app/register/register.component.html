@@ -40,7 +40,7 @@
             <div class="field-spacer"></div>
             
             <!-- Bouton du formulaire -->
-            <button mat-raised-button class="registerFormButton"> C'est parti ! </button>
+            <button mat-raised-button [disabled]="!registerForm.valid"> C'est parti ! </button>
         </form>    
     </mat-card-content>
 </mat-card>

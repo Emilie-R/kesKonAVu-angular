@@ -7,14 +7,6 @@
       <div class="appli-header-title-icon"><i class="fa fa-list-alt" aria-hidden="true"></i></div>
       <h1>KesKonAVu</h1>
     </div>
-    <!--Gestion de l'identification du user si connecté et de la fonction login/logout-->
-    <div *ngIf="isLog" class="appli-header-member">      
-      <!--Si connecté : affichage du pseudo et bouton de déconnexion au survol-->
-      {{loggedMember.pseudo}}
-      <button mat-mini-fab class="logout-btn">
-        <mat-icon>person</mat-icon>
-      </button>
-    </div>
   </div>
 </header> <!--Fin du bandeau principal de l'application -->
 

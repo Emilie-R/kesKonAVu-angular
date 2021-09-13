@@ -21,7 +21,7 @@
             <div class="field-spacer"></div>
 
             <!-- Bouton du formulaire -->
-            <button mat-raised-button class="loginFormButton"> Se connecter </button>
+            <button mat-raised-button [disabled]="!loginForm.valid" > Se connecter </button>
                     </form>
     </mat-card-content>
 </mat-card>

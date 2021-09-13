@@ -1,0 +1,9 @@
+<!--Gestion de l'identification du user si connecté et de la fonction login/logout-->
+<div *ngIf="isLog" class="container appli-member">      
+    <!--Si connecté : affichage du pseudo et bouton de déconnexion au survol-->
+    {{loggedMember.pseudo}}
+    <button mat-mini-fab
+    (click)="OnClickLogOut()" class="logout-btn">
+      <mat-icon>person</mat-icon>
+    </button>
+</div>

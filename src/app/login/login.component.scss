@@ -4,7 +4,7 @@ form.loginForm {
     font-family: 'Montserrat', sans-serif;
 }
 
-form.loginForm button, form.loginForm input {
+form.loginForm button, form.loginForm input, form.loginForm mat-form-field {
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -13,6 +13,13 @@ form.loginForm button{
     color: white;
     font-size: 1rem;
 }
+
+form.loginForm button:disabled{
+    background: #b3b3b3;
+    color: white;
+    font-size: 1rem;
+}
+
 
 form.loginForm div.field-spacer {
     height: 10px;

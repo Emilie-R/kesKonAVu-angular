@@ -26,16 +26,6 @@ div.appli-header-title-icon {
     font-size: 1.5rem;
 }
 
-div.appli-header-member {
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    font-size: 0.9rem;
-}
-
-.logout-btn {
-    color : black;
-    font-size: 1.25rem;
-    background:  rgba(222, 169, 233, 0.4);
-    margin: 5px 0px 5px 10px;
+main {
+    border-bottom: 1px solid rgb(176, 90, 194);
 }

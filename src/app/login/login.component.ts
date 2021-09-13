@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { MemberModel } from 'src/models/member.model';
+import { MemberModel } from '../models/member.model';
 import { MemberService } from '../services/member.service';
 
 @Component({
@@ -61,7 +61,7 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.controls.password.hasError('minlength')) {
       return "Le mot de passe doit contenir au moins 6 caractères";
     }
-    return;
+    return "";
   }
 
 

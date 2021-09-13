@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MemberModel } from 'src/models/member.model';
+import { MemberModel } from 'src/app/models/member.model';
 import { MemberService } from './services/member.service';
 
 @Component({

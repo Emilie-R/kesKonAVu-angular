@@ -1,0 +1,28 @@
+
+nav {
+    width:180px;
+    background-color: #272f36;
+    border-right: 1px solid #656565;
+    text-transform: uppercase;
+    height: 100%;
+}
+
+.member-content-nav mat-list-item {
+    font-family: 'Montserrat', sans-serif;
+    color:#d8d8d8;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.member-content-nav mat-list-item i {
+    margin-right: 15px;
+    font-size: 16px;
+}
+
+.member-content-nav mat-list-item:hover, .member-content-nav mat-list-item.active-nav{
+    color: white;
+    border-right: 3px solid rgb(176, 90, 194);
+    cursor: pointer;
+}

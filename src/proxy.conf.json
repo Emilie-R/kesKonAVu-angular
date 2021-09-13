@@ -1,0 +1,20 @@
+{
+    "/v1/authenticate": {
+        "target": "http://localhost:8080",
+        "secure": false,
+        "logLevel": "debug"
+    },
+
+    "/v1/member/create": {
+        "target": "http://localhost:8080",
+        "secure": false,
+        "logLevel": "debug"
+    },
+
+    "/v1/member/followups": {
+        "target": "http://localhost:8080",
+        "secure": false,
+        "logLevel": "debug"
+    }
+
+}

@@ -1,0 +1,56 @@
+<!--Gestion de l'identification du user si connecté et de la fonction login/logout-->
+<nav>
+    <app-member></app-member>
+</nav>
+
+<!-- SIDEBAR et Cartes Films -->
+<div class="member-content">
+    <!-- Barre latérale de navigation entre séries/ films -->
+    <aside>
+        <app-member-content-nav></app-member-content-nav>
+    </aside>
+
+    <!-- Contenu principal de la page avec les sous-menus et les cartes -->
+    <section class="container member-content-block">
+        <!-- Titre du contenu -->
+        <h2>Mes Films</h2>
+
+        <!--Menu de sous-navigation dans la page Envie/ Vu + Ajouter des films-->
+        <nav class="member-content-submenu">
+            <ul>
+                <li (click)="onClickMesEnvies()" [class.active-nav]="isMesEnvies">Mes envies ({{ wishListNb }})</li>
+                <li (click)="onClickDejaVus()" [class.active-nav]="!isMesEnvies">Déjà vus ({{ seenListNb }})</li>
+            </ul>
+            <button mat-flat-button
+                (click)="OnClickAddFilm()">
+                <mat-icon>add</mat-icon> Ajouter des films
+            </button>
+        </nav>
+
+        <!-- Sous-titre de la navigation selon la sélection de l'utilisateur-->
+        <div class="member-content-subtitle">
+            <p *ngIf="isMesEnvies">Tous les films que vous avez sélectionnés dans vos envies</p>
+            <p *ngIf="!isMesEnvies">Tous les films que vous avez vus ou notés</p>
+        </div>
+
+        <!-- Liste des combo-box pour la sélection tri des films -->
+        <div class="member-content-filters">TO DO</div>
+
+        <!-- Liste des resources followups -->
+        <div class="row member-card-list">
+            <div *ngIf="!isMesEnvies" 
+                class="col-6 col-md-4 col-lg-3 col-xl-2 movie-add-card" >
+                <mat-card (click)="OnClickAddFilm()">
+                    <mat-icon>add_box</mat-icon>
+                    <div> Ajouter des films</div>
+                </mat-card>
+            </div>
+
+            <div *ngFor = "let followUp of followUpList" 
+            class="col-6 col-md-4 col-lg-3 col-xl-2">
+                <!-- Carte pour chaque followUp du member à afficher-->
+                <app-card [followUp]></app-card>
+            </div>
+        </div>
+    </section>
+</div>

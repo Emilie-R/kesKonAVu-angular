@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -8,6 +9,8 @@ import { AccueilConnexionComponent } from './accueil-connexion/accueil-connexion
 import { AccueilInscriptionComponent } from './accueil-inscription/accueil-inscription.component';
 import { MesFilmsComponent } from './mes-films/mes-films.component';
 import { MesSeriesComponent } from './mes-series/mes-series.component';
+import { DetailFilmComponent } from './detail-film/detail-film.component';
+import { DetailSerieComponent } from './detail-serie/detail-serie.component';
 
 
 @NgModule({
@@ -17,10 +20,13 @@ import { MesSeriesComponent } from './mes-series/mes-series.component';
     AccueilConnexionComponent,
     AccueilInscriptionComponent,
     MesFilmsComponent,
-    MesSeriesComponent
+    MesSeriesComponent,
+    DetailFilmComponent,
+    DetailSerieComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule
   ],
   providers: [],

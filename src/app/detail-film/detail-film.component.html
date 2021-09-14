@@ -1,0 +1,64 @@
+<div class="main-user-content container-fluid">
+    <div class="d-flex ">
+        <button class="backbtn" routerLink="/mes-films"><i class="fas fa-arrow-left"></i></button>
+        <h1>{{resource.title}}</h1>
+    </div>
+    <!-- infos détail -->
+
+    <div class="card">
+        <div class="row">
+            <div class="col-4">
+                <img src={{resource.image}}
+                    class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-4">
+                <h5 class="card-text"> Date : <h6 class="text-warning">
+                    {{resource.date}}</h6>
+                </h5>
+                <h5 class="card-text"> Réalisateur : <h6 class="text-warning">
+                    {{resource.realisateur}}</h6>
+                </h5>
+                <h5 class="card-text">Avec : <h6 class="text-warning">{{resource.acteurs}}</h6>
+                </h5>
+                <h5 class="card-text">Synopsis : <h6 class="text-warning">{{resource.synopsis}}</h6>
+                </h5>
+            </div>
+        </div>
+    </div>
+    <!--fin card-->
+
+    <div class="row">
+        <div class="col-6" *ngIf="isSerie">
+            <!--tableau des saisons-->
+            <table class="table table-sm table-bordered border-white">
+                <thead>
+                    <tr>
+                        <th scope="col">Saison</th>
+                        <th scope="col">Episodes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>5</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!--fin tableau des saisons-->
+        <div class="col-6">
+            <!--zone de notaion -->
+            <div class="d-flex justify-content-between align-items-center">
+                <h5>Note : </h5>
+                <i class="far fa-meh card-note-bof fa-3x"></i>
+                <i class="far fa-smile card-note-moyen fa-3x"></i>
+                <i class="far fa-grin-stars card-note-top fa-3x"></i>
+            </div>
+        </div>
+        <!--fin zone de notation-->
+    </div>
+</div>

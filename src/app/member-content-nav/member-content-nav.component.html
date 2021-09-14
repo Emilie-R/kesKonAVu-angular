@@ -1,0 +1,9 @@
+<nav>
+    <mat-list class="member-content-nav">
+        <mat-list-item routerLink="/mes-films" [class.active-nav]="isMovies">
+            <i class="fa fa-film" aria-hidden="true"></i> Mes films</mat-list-item>
+        <mat-list-item routerLink="/mes-series" [class.active-nav]="!isMovies">
+            <i class="fa fa-television" aria-hidden="true"></i> Mes séries</mat-list-item>
+    </mat-list>
+</nav>    
+

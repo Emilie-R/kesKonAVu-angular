@@ -1,0 +1,46 @@
+div.main-home {
+    background: white;
+    min-height: calc(100vh - 92px);
+}
+
+section.home-welcome {
+    margin-top: 3rem;
+    margin-bottom:2rem;
+    text-align: center;
+}
+
+section.home-welcome h2 {
+    font-weight: bolder;
+}
+
+section.home-forms {
+    margin: 10px 25px;
+    max-width: 500px;
+    margin: auto;
+}
+
+ul.home-list-links {
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    padding: 0px;
+    margin-bottom: 10px;
+}
+
+ul.home-list-links li{
+    text-transform: uppercase;
+    border-bottom : solid rgb(255, 255, 255);
+    font-weight: bold;
+    padding : 3px 5px;
+    color:#b3b3b3;
+}
+
+ul.home-list-links li.home-link-active, ul.home-list-links li:hover {
+    border-bottom : solid rgb(176, 90, 194);
+    color : black;
+    cursor: pointer;
+}
+
+section.home-forms mat-divider{
+    color:#b3b3b3;
+}

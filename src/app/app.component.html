@@ -1,14 +1,16 @@
 <!-- Pour le bandeau principal de l'application -->
 <header>
-  <div class="navbar navbar-dark">
-    <div class="container">
-      <div class="header-application-titre">
-        <div class="header-application-titre-icone"><i class="fa fa-list-alt" aria-hidden="true"></i></div>
-        <div class="header-application-titre-texte">KesKonAVu</div>
-      </div>
+  <!-- Bandeau de l'application qui apparaît sur toutes les pages-->
+  <div class="container appli-header">
+    <!--Titre de l'application avec icone-->
+    <div class="appli-header-title">
+      <div class="appli-header-title-icon"><i class="fa fa-list-alt" aria-hidden="true"></i></div>
+      <h1>KesKonAVu</h1>
     </div>
   </div>
-</header>
+</header> <!--Fin du bandeau principal de l'application -->
+
 <main>
+  <!--Affiche Ecran de connexion/login route "/"-->
   <router-outlet></router-outlet>
 </main>

@@ -1,0 +1,16 @@
+div.appli-member {
+    font-weight: 500;
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: sticky;
+    top:0px;
+}
+
+.logout-btn {
+    color : black;
+    font-size: 1.25rem;
+    background: rgb(176, 90, 194);
+    margin: 5px 0px 5px 10px;
+}

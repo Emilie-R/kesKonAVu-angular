@@ -1,0 +1,100 @@
+div.member-content {
+    background: #272F36;
+    border-top: 1px solid rgb(176, 90, 194);
+    display: flex;
+    min-height: calc(100vh - 95px);
+}
+
+
+section {
+    padding : 45px;
+    color: #b3b3b3;
+}
+
+h2 {
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #ececec;
+}
+
+nav.member-content-submenu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;;
+}
+
+.member-content-submenu ul {
+    display: flex;
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.member-content-submenu li {
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 0.1rem;
+    font-weight: 600;
+    padding-bottom: 3px;
+    color: #b3b3b3;
+    margin: 1rem 3rem 1rem 0rem;
+    border-bottom: 3px solid rgba(0,0,0,0);
+}
+
+.member-content-submenu li:hover, .member-content-submenu li.active-nav {
+    color: white;
+    border-bottom: 3px solid rgb(176, 90, 194);
+    cursor: pointer;
+}
+
+.member-content-submenu button{
+    background: black;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    color :white;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+div.member-content-subtitle p {
+    margin-bottom: 24px;
+    font-size: 10px;
+    text-transform: uppercase;
+}
+
+div.member-content-filters {
+    margin-bottom:32px;
+}
+
+.movie-add-card mat-card{
+    height: 200px;
+    width: 150px;
+    cursor: pointer;
+    background: #181D21;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.movie-add-card mat-card mat-icon {
+    font-size: 35px;
+    margin-bottom: 12px;
+    color: #b3b3b3;
+}
+
+.movie-add-card mat-card div {
+    margin-top: 20px;
+    width: 95px;
+    text-transform: uppercase;
+    text-align: center;
+    color :white;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 1px;
+}

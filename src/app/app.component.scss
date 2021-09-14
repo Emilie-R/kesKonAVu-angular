@@ -1,18 +1,31 @@
 header {
     background: rgb(176, 90, 194);
-    font-size: 20px;
-    color :white;
 }
 
-.header-application-titre {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: bold;
+div.appli-header {
     display: flex;
-    justify-content: right;
+    justify-content: space-between;
     align-items: center;
 }
 
-.header-application-titre-icone {
-    margin: 0rem 0.5rem;
-    font-size: 20px;
+div.appli-header-title {
+    display: flex;
+    justify-content: left;
+    align-items: baseline;
+    color : white;
+    margin : 2px 0px;
+}
+
+div.appli-header-title h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+div.appli-header-title-icon {
+    padding: 0px 12px;
+    font-size: 1.5rem;
+}
+
+main {
+    border-bottom: 1px solid rgb(176, 90, 194);
 }

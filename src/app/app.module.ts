@@ -16,13 +16,20 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input'
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
-import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar'
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
 import { ReactiveFormsModule } from '@angular/forms';
 import { MoviesComponent } from './movies/movies.component';
 import { MemberComponent } from './member/member.component';
 import { MemberContentNavComponent } from './member-content-nav/member-content-nav.component';
 import { CardComponent } from './card/card.component';
 import { TokenInterceptor } from './interceptors/token.interceptor';
+import { SeriesComponent } from './series/series.component';
+import { ResourceDialogComponent } from './resource-dialog/resource-dialog.component';
 
 
 @NgModule({
@@ -36,7 +43,9 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
     MoviesComponent,
     MemberComponent,
     MemberContentNavComponent,
-    CardComponent
+    CardComponent,
+    SeriesComponent,
+    ResourceDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -44,6 +53,7 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
     HttpClientModule,
     BrowserAnimationsModule,
     MatButtonModule, MatDividerModule, MatIconModule, MatInputModule, MatCardModule, MatListModule, MatSnackBarModule,
+    MatMenuModule, MatProgressBarModule, MatDialogModule, MatProgressSpinnerModule,
     ReactiveFormsModule
   ],
   providers: [{provide:HTTP_INTERCEPTORS, useClass:TokenInterceptor, multi:true}],

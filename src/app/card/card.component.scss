@@ -1,0 +1,71 @@
+div.resource-card {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right : 5px;
+}
+
+mat-card {
+    background: black;
+    width: 155px;
+
+}
+
+mat-card img.mat-card-image {
+    height: 210px;
+    width: 155px;
+    position: relative;
+}
+
+mat-card button {
+    border-radius:3px;
+    border: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: black;
+    color:white;
+    width: 35px;
+    height: 32px;
+    padding-top: 4px;
+}
+
+mat-progress-bar {
+    position:absolute;
+    top: 210px;
+    left : 0px;
+    z-index:1;
+}
+
+mat-card mat-card-content div.card-title {
+    text-align: center;
+    background: black;
+    font-family: 'Montserrat', sans-serif;
+    color :white;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+mat-card mat-card-content div.card-episodes {
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    color :#B3B3B3;
+    font-size: 10px;
+    font-weight: 400;
+}
+
+button.mat-menu-item {
+    font-size: 10px;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    height: 32px;
+    line-height: 32px;
+}
+button.mat-menu-item:hover {
+    background-color: rgba(176, 90, 194, 0.5);
+}
+
+button.mat-menu-item i {
+    padding: 0px 12px;
+}

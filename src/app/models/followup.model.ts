@@ -1,14 +1,17 @@
+import { environment } from "src/environments/environment";
+
 export class FollowUpModel {
    
    idFollowUp:number;
-   status:string;
+   status:Status;
    lastModification:Date;
    note:number;
    progression:number;
    numberUnseenEpisodes:number;
-   resourceType:string;
+   resourceType:ResourceType;
    title:string;
    idImdb:string;
+   pictureUrl:string;
 
    constructor(followupData:any){
     this.idFollowUp = followupData.idFollowUp;
@@ -21,6 +24,17 @@ export class FollowUpModel {
     this.idImdb = followupData.resourceDTO.idImdb;
     this.title = followupData.resourceDTO.title;
     this.resourceType = followupData.resourceDTO.resourceType;
+    this.pictureUrl = followupData.resourceDTO.pictureUrl;
 
    }
+}
+
+export enum Status {
+   avoir = 'AVOIR',
+   vu = 'VU'
+}
+
+export enum ResourceType {
+   movie = 'MOVIE',
+   serie = 'SERIE'
 }

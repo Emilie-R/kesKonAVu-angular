@@ -1,0 +1,32 @@
+<mat-dialog-actions align="end">
+    <button mat-icon-button mat-dialog-close>
+        <mat-icon>close</mat-icon>
+    </button>
+</mat-dialog-actions>
+
+<h1>Ajouter {{ getResourceTypeLabel() }}</h1>
+<mat-divider></mat-divider>
+
+<p>Rechercher par titre <br>
+    <small>Cliquer deux fois sur un résultat pour l'ajouter à votre liste</small>
+</p>
+
+
+<mat-form-field class="search-bar" appearance="fill">
+    <mat-label>Saisir un titre</mat-label>
+    <input matInput type="text" #searchBar (keyup)="findResourcesByTitle(searchBar.value)">
+
+    <button mat-icon-button matSuffix (click)="findResourcesByTitle(searchBar.value)">
+        <mat-icon>search</mat-icon>
+    </button>
+</mat-form-field>
+
+<mat-selection-list #results [multiple]="false">
+    <mat-list-option *ngFor="let result of resourceResults" [value]="result" 
+    (dblclick)="addResourceToList(result)">
+        <img matListAvatar [src]="result.Poster" alt="poster">
+        <h3 class="resource-title" matLine> {{ result.Title }} </h3>
+        <p matLine> Année de sortie : {{ result.Year }} </p>
+    </mat-list-option>
+</mat-selection-list>
+<p *ngIf="noResult"> Aucune correspondance trouvée </p>

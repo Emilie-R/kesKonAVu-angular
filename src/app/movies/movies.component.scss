@@ -108,6 +108,38 @@ div.member-content-filters {
     letter-spacing: 1px;
 }
 
+div.member-content-select {
+    margin-bottom:32px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+div.member-content-select button {
+    background: #181D21;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    margin-right: 40px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+button.mat-menu-item {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+}
+
+button.mat-menu-item:hover {
+    background-color: rgba(176, 90, 194, 0.5);
+}
+
+button.sort-menu {
+    width: 180px;
+}
+
+button.filter-menu {
+    width: 137px;
+}
+
 div.loader {
     position:fixed;
     top:0;

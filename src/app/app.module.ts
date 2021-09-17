@@ -21,6 +21,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { MoviesComponent } from './movies/movies.component';
@@ -30,6 +32,7 @@ import { CardComponent } from './card/card.component';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { SeriesComponent } from './series/series.component';
 import { ResourceDialogComponent } from './resource-dialog/resource-dialog.component';
+import { FollowupNoteComponent } from './followup-note/followup-note.component';
 
 
 @NgModule({
@@ -45,7 +48,8 @@ import { ResourceDialogComponent } from './resource-dialog/resource-dialog.compo
     MemberContentNavComponent,
     CardComponent,
     SeriesComponent,
-    ResourceDialogComponent
+    ResourceDialogComponent,
+    FollowupNoteComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +57,7 @@ import { ResourceDialogComponent } from './resource-dialog/resource-dialog.compo
     HttpClientModule,
     BrowserAnimationsModule,
     MatButtonModule, MatDividerModule, MatIconModule, MatInputModule, MatCardModule, MatListModule, MatSnackBarModule,
-    MatMenuModule, MatProgressBarModule, MatDialogModule, MatProgressSpinnerModule,
+    MatMenuModule, MatProgressBarModule, MatDialogModule, MatProgressSpinnerModule, MatSelectModule, MatFormFieldModule,
     ReactiveFormsModule
   ],
   providers: [{provide:HTTP_INTERCEPTORS, useClass:TokenInterceptor, multi:true}],

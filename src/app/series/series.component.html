@@ -32,7 +32,13 @@
         </nav>
 
         <!-- Liste des combo-box pour la sélection tri des films -->
-        <div class="member-content-filters">TO DO</div>
+        <div *ngIf="!isMesEnvies" class="member-content-select">
+            <button mat-flat-button class="sort-menu"
+                [matMenuTriggerFor]="sortBy"> {{ selectedSortByCriteria.viewValue }}  <i class="fa fa-angle-down" aria-hidden="true"></i></button>
+
+            <button mat-flat-button class="filter-menu"
+            [matMenuTriggerFor]="filterBy"> {{ selectedFilterByNote.viewValue }}  <i class="fa fa-angle-down" aria-hidden="true"></i></button>
+         </div>
 
         <!-- Liste des resources followups -->
         <div class="row member-card-list">
@@ -52,3 +58,14 @@
         </div>
     </section>
 </div>
+
+
+<mat-menu #sortBy="matMenu">
+    <button *ngFor="let sortBy of sortByCriteria" mat-menu-item class="sort-menu"
+    (click)="onChangeSortByCriteria(sortBy)"> {{ sortBy.viewValue }}</button>
+</mat-menu>
+
+<mat-menu #filterBy="matMenu">
+    <button *ngFor="let filterBy of filterByNote"  mat-menu-item class="filter-menu"
+    (click)="onChangeFilterByCriteria(filterBy)"> {{ filterBy.viewValue }} </button>
+</mat-menu>

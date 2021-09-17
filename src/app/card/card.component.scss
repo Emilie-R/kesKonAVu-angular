@@ -36,22 +36,23 @@ mat-progress-bar {
     z-index:1;
 }
 
-mat-card mat-card-content div.card-title {
+mat-card mat-card-content div {
     text-align: center;
-    background: black;
     font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+}
+
+mat-card mat-card-content div.card-title {
     color :white;
     font-size: 12px;
     font-weight: 600;
+    margin-bottom: 0;
 }
 
 mat-card mat-card-content div.card-episodes {
-    text-align: center;
-    text-transform: uppercase;
-    font-family: 'Montserrat', sans-serif;
     color :#B3B3B3;
-    font-size: 10px;
-    font-weight: 400;
+    text-transform: uppercase;
 }
 
 button.mat-menu-item {

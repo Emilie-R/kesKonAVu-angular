@@ -1,3 +1,5 @@
+import { ResourceModel } from "./resource.model";
+
 export class FollowUpModel {
    
    idFollowUp:number;
@@ -9,6 +11,7 @@ export class FollowUpModel {
    resourceType:string;
    title:string;
    idImdb:string;
+   resource:ResourceModel;
 
    constructor(followupData:any){
     this.idFollowUp = followupData.idFollowUp;
@@ -21,6 +24,7 @@ export class FollowUpModel {
     this.idImdb = followupData.resourceDTO.idImdb;
     this.title = followupData.resourceDTO.title;
     this.resourceType = followupData.resourceDTO.resourceType;
+    this.resource = followupData.resourceDTO.map((dto:any) => new ResourceModel(dto));
 
    }
 }

@@ -32,11 +32,11 @@
         <mat-divider *ngIf="isSerie && isWish"></mat-divider>
 
         <button mat-menu-item *ngIf="!isWish" 
-                        (click)="deleteFollowUp()"><i class="fa fa-trash" aria-hidden="true"></i>Ne plus
+                        (click)="deleteFollowUp(followUp)"><i class="fa fa-trash" aria-hidden="true"></i>Ne plus
                 suivre</button>
         <mat-divider *ngIf="!isWish" ></mat-divider>
 
         <button mat-menu-item *ngIf="isWish" 
-                (click)="deleteFollowUp()"><i class="fa fa-trash" aria-hidden="true"></i>Retirer des envies</button>
+                (click)="deleteFollowUp(followUp)"><i class="fa fa-trash" aria-hidden="true"></i>Retirer des envies</button>
         <mat-divider *ngIf="isWish" ></mat-divider>
 </mat-menu>

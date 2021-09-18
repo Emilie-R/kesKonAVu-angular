@@ -97,4 +97,43 @@ export class FollowupService {
        }
     )
   }
+
+  deleteFollowUp(followUp) {
+    this.http.delete("/v1/followup/" + followUp.idFollowUp).subscribe();
+
+    if (followUp.status == Status.avoir && followUp.resourceType == ResourceType.movie) {
+      let newList = this.moviesWishList$.getValue();
+      newList = newList.filter((item:FollowUpModel) => item.idFollowUp != followUp.idFollowUp);
+
+      this.moviesWishList$.next(newList);
+    }
+
+    if (followUp.status == Status.vu && followUp.resourceType == ResourceType.movie) {
+      let newList = this.moviesSeenList$.getValue();
+      newList = newList.filter((item:FollowUpModel) => item.idFollowUp != followUp.idFollowUp);
+
+      this.moviesSeenList$.next(newList);
+    }
+
+    if (followUp.status == Status.avoir && followUp.resourceType == ResourceType.serie) {
+      let newList = this.seriesWishList$.getValue();
+      newList = newList.filter((item:FollowUpModel) => item.idFollowUp != followUp.idFollowUp);
+
+      this.seriesWishList$.next(newList);
+    }
+
+    if (followUp.status = Status.vu && followUp.resourceType == ResourceType.movie) {
+      let newList = this.seriesSeenList$.getValue();
+      newList = newList.filter((item:FollowUpModel) => item.idFollowUp != followUp.idFollowUp);
+
+      this.seriesSeenList$.next(newList);
+    }
+  }
+
+  initFollowUpLists() {
+    this.moviesWishList$.next([]);
+    this.moviesSeenList$.next([]);
+    this.seriesWishList$.next([]);
+    this.seriesSeenList$.next([]);
+  }
 }

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FollowUpModel, ResourceType, Status } from '../models/followup.model';
+import { FollowupService } from '../services/followup.service';
 
 @Component({
   selector: 'app-card',
@@ -8,13 +9,13 @@ import { FollowUpModel, ResourceType, Status } from '../models/followup.model';
 })
 export class CardComponent implements OnInit {
 
-  @Input() followUp;
+  @Input() followUp:FollowUpModel;
 
   isSerie:boolean;
   isMovie:boolean;
   isWish:boolean;
 
-  constructor() { 
+  constructor(private followUpService: FollowupService) { 
   }
 
   ngOnInit(): void {
@@ -39,8 +40,9 @@ export class CardComponent implements OnInit {
     alert("Sur le détail de la ressource");
   }
 
-  deleteFollowUp() {
-    alert("Supprimer le followUp");
+  deleteFollowUp(followUp:FollowUpModel) {
+    console.log(followUp);
+    this.followUpService.deleteFollowUp(followUp);
   }
 
   openEpisodeProgression() {

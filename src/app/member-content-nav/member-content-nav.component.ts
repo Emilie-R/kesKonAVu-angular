@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MemberService } from '../services/member.service';
 
 @Component({
   selector: 'app-member-content-nav',
@@ -11,7 +12,8 @@ export class MemberContentNavComponent implements OnInit {
   isMovies:boolean=true;
 
   constructor(private route: ActivatedRoute,
-              private router: Router) { }
+              private router: Router,
+              private memberService : MemberService) { }
 
   ngOnInit(): void {
     if (this.route.snapshot.routeConfig?.path == "mes-films") {
@@ -21,5 +23,8 @@ export class MemberContentNavComponent implements OnInit {
     }
     
   }
-
+  
+  onClickLogOut() {
+    this.memberService.logoutMember();
+  }
 }

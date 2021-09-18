@@ -23,7 +23,7 @@ export class MesFilmsComponent implements OnInit {
 
   goToDetailPage(id:number){
     this.resourceSvc.resource$.next(this.resource);
-    // this.resourceSvc.getResourceFromApi(id);//pour consulter le console.log pour tests
+    this.resourceSvc.getResourceFromApi(id);//pour consulter le console.log pour tests
     this.router.navigate(['detail',this.resource.id])
   }
 

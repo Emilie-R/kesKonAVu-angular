@@ -18,7 +18,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input'
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
-import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar'
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MoviesComponent } from './movies/movies.component';
 import { MemberComponent } from './member/member.component';
@@ -33,15 +33,7 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
     MesFilmsComponent,
     MesSeriesComponent,
     DetailFilmComponent,
-    DetailSerieComponent
-  ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatButtonModule, MatDividerModule, MatIconModule, MatInputModule, MatCardModule, MatListModule, MatSnackBarModule,
-    ReactiveFormsModule
+    DetailSerieComponent,
     HomeComponent,
     LoginComponent,
     RegisterComponent,
@@ -49,6 +41,14 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
     MemberComponent,
     MemberContentNavComponent,
     CardComponent
+  ],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatButtonModule, MatDividerModule, MatIconModule, MatInputModule, MatCardModule, MatListModule, MatSnackBarModule,
+    ReactiveFormsModule,
   ],
   providers: [{provide:HTTP_INTERCEPTORS, useClass:TokenInterceptor, multi:true}],
   bootstrap: [AppComponent]

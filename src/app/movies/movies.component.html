@@ -49,7 +49,7 @@
             <div *ngFor = "let followUp of followUpList" 
             class="col-6 col-md-4 col-lg-3 col-xl-2">
                 <!-- Carte pour chaque followUp du member à afficher-->
-                <app-card [followUp]></app-card>
+                <app-card [followUp]="followUp"></app-card>
             </div>
         </div>
     </section>

@@ -19,12 +19,16 @@ import { MatInputModule } from '@angular/material/input'
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatFormFieldModule} from '@angular/material/form-field';
+
 import { ReactiveFormsModule } from '@angular/forms';
 import { MoviesComponent } from './movies/movies.component';
 import { MemberComponent } from './member/member.component';
 import { MemberContentNavComponent } from './member-content-nav/member-content-nav.component';
 import { CardComponent } from './card/card.component';
 import { TokenInterceptor } from './interceptors/token.interceptor';
+import { DetailComponent } from './detail/detail.component';
 
 
 @NgModule({
@@ -40,7 +44,8 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
     MoviesComponent,
     MemberComponent,
     MemberContentNavComponent,
-    CardComponent
+    CardComponent,
+    DetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,8 +54,13 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
     BrowserAnimationsModule,
     MatButtonModule, MatDividerModule, MatIconModule, MatInputModule, MatCardModule, MatListModule, MatSnackBarModule,
     ReactiveFormsModule,
+    MatDialogModule,
+    MatFormFieldModule
   ],
   providers: [{provide:HTTP_INTERCEPTORS, useClass:TokenInterceptor, multi:true}],
+  entryComponents: [
+    DetailComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

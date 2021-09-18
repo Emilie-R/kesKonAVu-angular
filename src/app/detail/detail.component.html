@@ -1,0 +1,31 @@
+<h2 mat-dialog-title>Détails</h2>
+<mat-dialog-content class="mat-typography">
+    
+        <mat-card class="example-card">
+        <mat-card-header>
+         <div mat-card-avatar class="example-header-image"></div>
+         <mat-card-title>{{followUp.title}}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image src="{{followUp.resource.pictureurl}}" alt="Not available">
+        <mat-card-content>
+        <p>{{followUp.resource.synopsis}}</p>
+        <p>Année : <i>{{followUp.resource.year}}</i></p>
+        <p>Réalisateur : <i>{{followUp.resource.director}}</i></p>
+        <p>Acteurs : <i>{{followUp.resource.actors}}</i></p>
+        <p>Durée : <i>{{followUp.resource.duration}}</i></p>
+        <p>Statut : <i>{{followUp.status}}</i></p>
+        <div class="d-flex">
+            <p>Note : </p>
+            <i *ngIf="{{followUp.note}} == 0" class="far fa-meh fa-3x"></i>
+            <i *ngIf="{{followUp.note}} == 1" class="far fa-smile fa-3x"></i>
+            <i *ngIf="{{followUp.note}} == 3" class="far fa-grin-stars fa-3x"></i>
+        </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-button>NOTER</button>
+        </mat-card-actions>
+    </mat-card>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button (click)="onClose()">Close</button>
+</mat-dialog-actions>

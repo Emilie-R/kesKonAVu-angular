@@ -10,12 +10,29 @@ import { FollowUpModel } from '../models/followup.model';
 })
 export class DetailComponent implements OnInit {
 
-  followUp:FollowUpModel;
+  isNo:boolean = false;
+  isNone:boolean=false;
+  isYes:boolean=false;
 
   constructor(public dialogRef: MatDialogRef<DetailComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
 
   ngOnInit(): void {
+    if(this.data.followUp.note < 1){
+
+      this.isNo = true;
+
+    }
+    if(this.data.followUp.note == 1){
+
+      this.isNone = true;
+
+    }
+    if(this.data.followUp.note > 1){
+
+      this.isYes = true;
+
+    }
     
   }
 

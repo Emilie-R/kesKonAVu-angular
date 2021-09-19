@@ -4,26 +4,26 @@
         <mat-card class="example-card">
         <mat-card-header>
          <div mat-card-avatar class="example-header-image"></div>
-         <mat-card-title>{{followUp.title}}</mat-card-title>
+         <mat-card-title>{{data.followUp.title}}</mat-card-title>
         </mat-card-header>
-        <img mat-card-image src="{{followUp.resource.pictureurl}}" alt="Not available">
-        <mat-card-content>
-        <p>{{followUp.resource.synopsis}}</p>
-        <p>Année : <i>{{followUp.resource.year}}</i></p>
-        <p>Réalisateur : <i>{{followUp.resource.director}}</i></p>
-        <p>Acteurs : <i>{{followUp.resource.actors}}</i></p>
-        <p>Durée : <i>{{followUp.resource.duration}}</i></p>
-        <p>Statut : <i>{{followUp.status}}</i></p>
-        <div class="d-flex">
-            <p>Note : </p>
-            <i *ngIf="{{followUp.note}} == 0" class="far fa-meh fa-3x"></i>
-            <i *ngIf="{{followUp.note}} == 1" class="far fa-smile fa-3x"></i>
-            <i *ngIf="{{followUp.note}} == 3" class="far fa-grin-stars fa-3x"></i>
+        <img mat-card-image src="{{data.followUp.resource.pictureurl}}" alt="Not available">
+        <mat-card-content class="d-flex flex-column">
+        <p>{{data.followUp.resource.synopsis}}</p>
+        <mat-label>Année : <i>{{data.followUp.resource.year}}</i></mat-label>
+        <mat-label>Réalisateur : <i>{{data.followUp.resource.director}}</i></mat-label>
+        <mat-label>Acteurs : <i>{{data.followUp.resource.actors}}</i></mat-label>
+        <mat-label>Durée : <i>{{data.followUp.resource.duration}}</i></mat-label>
+        <mat-label>Statut : <i>{{data.followUp.status}}</i></mat-label>
+        <div class="d-flex align-items-center">
+            <mat-label>Note :</mat-label>
+            <i *ngIf="isNo" class="far fa-meh fa-3x"></i>
+            <i *ngIf="isNone" class="far fa-smile fa-3x"></i>
+            <i *ngIf="isYes" class="far fa-grin-stars fa-3x"></i>
         </div>
         </mat-card-content>
-        <mat-card-actions>
+        <!-- <mat-card-actions>
             <button mat-button>NOTER</button>
-        </mat-card-actions>
+        </mat-card-actions> -->
     </mat-card>
 </mat-dialog-content>
 <mat-dialog-actions>

@@ -3,6 +3,18 @@
   }
   
   .example-header-image {
-    // background-image: url({{followUp.resource.pictureurl}});
+    // background-image: url({{data.followUp.resource.pictureurl}});
     background-size: cover;
   }
+
+.fa-grin-stars{
+  color:#48f848
+}
+
+.fa-smile{
+  color:hsl(39, 93%, 63%)
+}
+
+.fa-meh{
+  color:rgb(247, 38, 30)
+}

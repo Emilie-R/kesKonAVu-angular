@@ -24,7 +24,7 @@ export class FollowUpModel {
     this.idImdb = followupData.resourceDTO.idImdb;
     this.title = followupData.resourceDTO.title;
     this.resourceType = followupData.resourceDTO.resourceType;
-    this.resource = followupData.resourceDTO.map((dto:any) => new ResourceModel(dto));
+    this.resource = new ResourceModel(followupData.resourceDTO);
 
    }
 }

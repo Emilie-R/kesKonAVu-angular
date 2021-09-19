@@ -5,7 +5,7 @@ import { FollowUpModel } from '../models/followup.model';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 export interface DialogData {
-  followUpSended:FollowUpModel;
+  followUp:FollowUpModel;
 }
 
 @Component({
@@ -27,8 +27,8 @@ export class CardComponent implements OnInit {
     // Ouvrir une modale(boîte de dialogue) qui contient un template HTML du détail
       // On utilise MatDialog
       this.dialog.open(DetailComponent, {
-        width:'80%',
-        data: {followUpSended:this.followUp}
+        width:'50%',
+        data: {followUp:this.followUp}
       });
    }
   }

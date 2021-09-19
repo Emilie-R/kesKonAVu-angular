@@ -13,6 +13,8 @@ export class FollowupService {
   moviesSeenList$ = new BehaviorSubject([]);
   seriesWishList$ = new BehaviorSubject([]);
   seriesFollowUps$ = new BehaviorSubject([]);
+  // pour modifier la note du followUp
+  followUpRated:FollowUpModel;
 
   constructor(private http : HttpClient) { 
 
@@ -39,5 +41,9 @@ export class FollowupService {
     }
     return this.moviesWishList$;
   }
+
+getFollowUpRated() : FollowUpModel{
+   return this.followUpRated;
+ }
 
 }

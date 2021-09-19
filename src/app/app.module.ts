@@ -29,6 +29,7 @@ import { MemberContentNavComponent } from './member-content-nav/member-content-n
 import { CardComponent } from './card/card.component';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { DetailComponent } from './detail/detail.component';
+import { RateComponent } from './rate/rate.component';
 
 
 @NgModule({
@@ -46,6 +47,7 @@ import { DetailComponent } from './detail/detail.component';
     MemberContentNavComponent,
     CardComponent,
     DetailComponent,
+    RateComponent,
   ],
   imports: [
     BrowserModule,

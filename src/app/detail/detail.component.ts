@@ -1,7 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogData } from '../card/card.component';
-import { FollowUpModel } from '../models/followup.model';
 
 @Component({
   selector: 'app-detail',

@@ -28,6 +28,7 @@ export class CardComponent implements OnInit {
       // On utilise MatDialog
       this.dialog.open(DetailComponent, {
         width:'50%',
+        panelClass:'my-panel-dialog',
         data: {followUp:this.followUp}
       });
    }

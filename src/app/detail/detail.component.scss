@@ -3,7 +3,7 @@
   }
   
   .example-header-image {
-    // background-image: url({{data.followUp.resource.pictureurl}});
+    // background-image: url("{{data.followUp.resource.pictureurl}}");
     background-size: cover;
   }
 
@@ -17,4 +17,12 @@
 
 .fa-meh{
   color:rgb(247, 38, 30)
+}
+
+mat-label{
+  margin-right: 10px;
+}
+
+button{
+  border: 1px solid rgb(176, 90, 194);
 }

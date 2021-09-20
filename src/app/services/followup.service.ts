@@ -37,10 +37,14 @@ export class FollowupService {
         .subscribe(
           (data:Array<FollowUpModel>) =>
             {
-              this.moviesWishList$.next(data.filter(followup => (followup.status == Status.avoir && followup.resourceType == ResourceType.movie)));
-              this.moviesSeenList$.next(data.filter(followup => (followup.status == Status.vu && followup.resourceType == ResourceType.movie)));
-              this.seriesWishList$.next(data.filter(followup => (followup.status == Status.avoir && followup.resourceType == ResourceType.serie)));
-              this.seriesSeenList$.next(data.filter(followup => (followup.status == Status.vu && followup.resourceType == ResourceType.serie)));
+              this.moviesWishList$.next(data.filter(followup => (followup.status == Status.avoir && followup.resourceType == ResourceType.movie))
+                                            .sort((a,b) => b.lastModification.valueOf() - a.lastModification.valueOf()));
+              this.moviesSeenList$.next(data.filter(followup => (followup.status == Status.vu && followup.resourceType == ResourceType.movie))
+                                            .sort((a,b) => b.lastModification.valueOf() - a.lastModification.valueOf()));
+              this.seriesWishList$.next(data.filter(followup => (followup.status == Status.avoir && followup.resourceType == ResourceType.serie))
+                                            .sort((a,b) => b.lastModification.valueOf() - a.lastModification.valueOf()));
+              this.seriesSeenList$.next(data.filter(followup => (followup.status == Status.vu && followup.resourceType == ResourceType.serie))
+                                            .sort((a,b) => b.lastModification.valueOf() - a.lastModification.valueOf()));
               this.followUpisLoading$.next(false);
             },
             // Gestion des erreurs de l'API

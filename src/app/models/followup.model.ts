@@ -16,7 +16,7 @@ export class FollowUpModel {
    constructor(followupData:any){
     this.idFollowUp = followupData.idFollowUp;
     this.status = followupData.status;
-    this.lastModification = followupData.lastModificationDate;
+    this.lastModification = new Date(followupData.lastModificationDate);
     this.note = followupData.note;
     this.progression = followupData.progression;
     this.numberUnseenEpisodes = followupData.numberOfUnseenEpisodes;

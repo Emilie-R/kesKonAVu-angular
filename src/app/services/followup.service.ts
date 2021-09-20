@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { FollowUpModel, ResourceType, Status } from '../models/followup.model';
 import { map } from 'rxjs/operators';
 
@@ -15,6 +15,9 @@ export class FollowupService {
   seriesSeenList$ = new BehaviorSubject([]);
   followUpisCreating$ = new BehaviorSubject(false);
   followUpisLoading$ = new BehaviorSubject(false);
+  // pour modifier la note du followUp
+  followUpRated:FollowUpModel;
+  followUpBefore:FollowUpModel;
 
   constructor(private http : HttpClient) { 
 
@@ -139,5 +142,16 @@ export class FollowupService {
     this.moviesSeenList$.next([]);
     this.seriesWishList$.next([]);
     this.seriesSeenList$.next([]);
+  }
+
+  // Mise à jour FollowUp : note ou status
+  updateFollowup(id:number, note: number, status: string): Observable<any> {
+    let url = "/v1/followup/update";
+
+    let body = { idFollowUp: id, note: note, status: status};
+    // let headers = new HttpHeaders().set('Content-type', 'application/json');
+
+    // return this.http.put(url, body, { headers });
+    return this.http.put(url, body);
   }
 }

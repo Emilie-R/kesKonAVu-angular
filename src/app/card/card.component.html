@@ -1,6 +1,6 @@
 <div class="resource-card">
         <mat-card>
-                <img [src]="followUp.pictureUrl" alt="" mat-card-image>
+                <img [src]="followUp.pictureUrl" alt="" mat-card-image (click)="goToRate()">
                 <button [matMenuTriggerFor]="menu">
                         <mat-icon>more_horiz</mat-icon>
                 </button>

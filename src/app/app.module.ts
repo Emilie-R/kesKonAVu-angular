@@ -36,6 +36,7 @@ import { SeriesComponent } from './series/series.component';
 import { ResourceDialogComponent } from './resource-dialog/resource-dialog.component';
 import { FollowupNoteComponent } from './followup-note/followup-note.component';
 import { DetailComponent } from './detail/detail.component';
+import { RateComponent } from './rate/rate.component';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import { DetailComponent } from './detail/detail.component';
     SeriesComponent,
     ResourceDialogComponent,
     FollowupNoteComponent,
-    DetailComponent
+    DetailComponent,
+    RateComponent
   ],
   imports: [
     BrowserModule,

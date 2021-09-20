@@ -1,4 +1,4 @@
-import { environment } from "src/environments/environment";
+import { ResourceModel } from "./resource.model";
 
 export class FollowUpModel {
    
@@ -12,6 +12,7 @@ export class FollowUpModel {
    title:string;
    idImdb:string;
    pictureUrl:string;
+   resource:ResourceModel;
 
    constructor(followupData:any){
     this.idFollowUp = followupData.idFollowUp;
@@ -25,6 +26,7 @@ export class FollowUpModel {
     this.title = followupData.resourceDTO.title;
     this.resourceType = followupData.resourceDTO.resourceType;
     this.pictureUrl = followupData.resourceDTO.pictureUrl;
+    this.resource = new ResourceModel(followupData.resourceDTO);
 
    }
 }

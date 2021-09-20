@@ -1,0 +1,31 @@
+<h2 mat-dialog-title>Détails</h2>
+<mat-dialog-content>
+    
+        <mat-card class="example-card">
+        <mat-card-header>
+         <div mat-card-avatar class="example-header-image"></div>
+         <mat-card-title>{{data.followUpData.title}}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image [src]="data.followUpData.pictureUrl" alt="Not available">
+        <mat-card-content class="d-flex flex-column">
+        <p>{{data.followUpData.resource.synopsis}}</p>
+        <mat-label>Année : <i>{{data.followUpData.resource.year}}</i></mat-label>
+        <mat-label>Réalisateur : <i>{{data.followUpData.resource.director}}</i></mat-label>
+        <mat-label>Acteurs : <i>{{data.followUpData.resource.actors}}</i></mat-label>
+        <mat-label>Durée : <i>{{data.followUpData.resource.duration}}</i></mat-label>
+        <mat-label>Statut : <i>{{data.followUpData.status}}</i></mat-label>
+        <div class="d-flex align-items-center">
+            <mat-label>Note :</mat-label>
+            <i *ngIf="isNo" class="far fa-meh fa-3x"></i>
+            <i *ngIf="isNone" class="far fa-smile fa-3x"></i>
+            <i *ngIf="isYes" class="far fa-grin-stars fa-3x"></i>
+        </div>
+        </mat-card-content>
+        <!-- <mat-card-actions>
+            <button mat-button>NOTER</button>
+        </mat-card-actions> -->
+    </mat-card>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button (click)="onClose()">Fermer</button>
+</mat-dialog-actions>

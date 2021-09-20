@@ -35,6 +35,7 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
 import { SeriesComponent } from './series/series.component';
 import { ResourceDialogComponent } from './resource-dialog/resource-dialog.component';
 import { FollowupNoteComponent } from './followup-note/followup-note.component';
+import { DetailComponent } from './detail/detail.component';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { FollowupNoteComponent } from './followup-note/followup-note.component';
     CardComponent,
     SeriesComponent,
     ResourceDialogComponent,
-    FollowupNoteComponent
+    FollowupNoteComponent,
+    DetailComponent
   ],
   imports: [
     BrowserModule,

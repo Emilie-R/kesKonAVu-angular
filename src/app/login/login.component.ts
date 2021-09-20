@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { MemberModel } from '../models/member.model';
 import { MemberService } from '../services/member.service';
@@ -15,7 +16,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private memberService: MemberService,
-              private route: Router) { }
+              private route: Router,
+              private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.loginForm=this.formBuilder.group(
@@ -41,8 +43,23 @@ export class LoginComponent implements OnInit {
             this.route.navigate(["/mes-films"]);
           },
           (error) => {
+            this.loginForm.reset();
             // Traiter les erreurs renvoyés par le service d'authentification
-          }
+            switch (error.status) {
+              case 404:
+                this.snackBar.open("pseudo/ mot de passe invalides", "Fermer", {
+                  horizontalPosition: 'center',
+                  verticalPosition: 'top'
+                });
+                break;
+              default:
+                  this.snackBar.open('Erreur serveur', 'Fermer' , {
+                  horizontalPosition: 'center',
+                  verticalPosition: 'top',
+                  duration : 5000
+                });
+          } 
+        }
         )
     }
   }

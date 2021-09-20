@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
-import { ResourceType } from '../models/followup.model';
+import { FollowUpModel, ResourceType } from '../models/followup.model';
 import { ResourceDialogComponent } from '../resource-dialog/resource-dialog.component';
 import { FollowupService } from '../services/followup.service';
 
@@ -88,12 +88,21 @@ export class MoviesComponent implements OnInit {
 
   onChangeSortByCriteria(selected:any) {
     this.selectedSortByCriteria = selected;
+    let followupListNull:Array<FollowUpModel>;
+    let followupListNotNull:Array<FollowUpModel>;
+
     switch(selected.value){
       case "noteDesc" :
-        this.followUpList = this.followUpList.sort((a, b) => a.note - b.note);
+        /* On classe les notes null à la fin de liste */
+        followupListNull = this.followupService.moviesSeenList$.getValue().filter(a => a.note == null);
+        followupListNotNull = this.followupService.moviesSeenList$.getValue().filter(a => a.note != null);
+        this.followUpList = [...followupListNotNull.sort((a, b) => b.note - a.note), ...followupListNull];
         break;
       case "noteAsc" :
-        this.followUpList = this.followUpList.sort((a, b) => b.note - a.note);
+        /* On classe les notes null à la fin de liste */
+        followupListNull = this.followupService.moviesSeenList$.getValue().filter(a => a.note == null);
+        followupListNotNull = this.followupService.moviesSeenList$.getValue().filter(a => a.note != null);
+        this.followUpList = [...followupListNotNull.sort((a, b) => a.note - b.note), ...followupListNull];
         break;
       default :
         this.followUpList = this.followUpList.sort((a, b) => b.lastModification - a.lastModification);

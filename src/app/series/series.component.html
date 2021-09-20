@@ -17,25 +17,19 @@
     <!-- Contenu principal de la page avec les sous-menus et les cartes -->
     <section class="container member-content-block">
         <!-- Titre du contenu -->
-        <h2>Mes Films</h2>
+        <h2>Mes Séries</h2>
 
         <!--Menu de sous-navigation dans la page Envie/ Vu + Ajouter des films-->
         <nav class="member-content-submenu">
             <ul>
                 <li (click)="onClickMesEnvies()" [class.active-nav]="isMesEnvies">Mes envies ({{ wishListNb }})</li>
-                <li (click)="onClickDejaVus()" [class.active-nav]="!isMesEnvies">Déjà vus ({{ seenListNb }})</li>
+                <li (click)="onClickDejaVus()" [class.active-nav]="!isMesEnvies">En cours ({{ seenListNb }})</li>
             </ul>
             <button mat-flat-button
                 (click)="openAddResourceDialog()">
-                <mat-icon>add</mat-icon> Ajouter des films
+                <mat-icon>add</mat-icon> Ajouter des séries
             </button>
         </nav>
-
-        <!-- Sous-titre de la navigation selon la sélection de l'utilisateur-->
-        <div class="member-content-subtitle">
-            <p *ngIf="isMesEnvies">Tous les films que vous avez sélectionnés dans vos envies</p>
-            <p *ngIf="!isMesEnvies">Tous les films que vous avez vus ou notés</p>
-        </div>
 
         <!-- Liste des combo-box pour la sélection tri des films -->
         <div *ngIf="!isMesEnvies" class="member-content-select">
@@ -52,7 +46,7 @@
                 class="col-6 col-md-4 col-lg-3 col-xl-2 movie-add-card" >
                 <mat-card (click)="openAddResourceDialog()">
                     <mat-icon>add_box</mat-icon>
-                    <div> Ajouter des films</div>
+                    <div> Ajouter des séries</div>
                 </mat-card>
             </div>
 
@@ -64,6 +58,7 @@
         </div>
     </section>
 </div>
+
 
 <mat-menu #sortBy="matMenu">
     <button *ngFor="let sortBy of sortByCriteria" mat-menu-item class="sort-menu"

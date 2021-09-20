@@ -23,7 +23,7 @@ export class RegisterComponent implements OnInit {
 
     this.registerForm = this.formBuilder.group({
       pseudo: ['', [Validators.required, Validators.minLength(6)]],
-      email: ['', Validators.email],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', [Validators.required, Validators.minLength(6)]]
     });
@@ -50,10 +50,11 @@ export class RegisterComponent implements OnInit {
             this.route.navigate(["/mes-films"]);
           },
           (error: any) => {
+            this.registerForm.reset();
             // Gestion des erreurs en cas de problème sur la création du member
             switch (error.status) {
               case 409:
-                this.snackBar.open("Ce pseudo est déjà attribué.", "Fermer", {
+                this.snackBar.open('Email/ pseudo déjà inscrits', 'Fermer', {
                   horizontalPosition: 'center',
                   verticalPosition: 'top'
                 });
@@ -71,8 +72,12 @@ export class RegisterComponent implements OnInit {
   }
 
   getEmailErrorMessage() {
+    console.log(this.registerForm.controls.email);
+    if (this.registerForm.controls.email.hasError('required')) {
+      return "Vous devez renseigner un email";
+    };
     if (this.registerForm.controls.email.hasError('email')) {
-      return "Renseigner un email valide";
+      return "email invalide";
     };
     return "";
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { FollowUpModel, ResourceType } from '../models/followup.model';
@@ -6,11 +6,11 @@ import { ResourceDialogComponent } from '../resource-dialog/resource-dialog.comp
 import { FollowupService } from '../services/followup.service';
 
 @Component({
-  selector: 'app-movies',
-  templateUrl: './movies.component.html',
-  styleUrls: ['./movies.component.scss']
+  selector: 'app-series',
+  templateUrl: './series.component.html',
+  styleUrls: ['./series.component.scss']
 })
-export class MoviesComponent implements OnInit {
+export class SeriesComponent implements OnInit {
 
   isMesEnvies!:boolean;
   followUpList!:Array<any>;
@@ -32,6 +32,7 @@ export class MoviesComponent implements OnInit {
     {value : "Bof", viewValue:"Bof"},
     {value : "None", viewValue:"Pas de note"}
   ]
+
   subcriptions!:[Subscription];
 
   constructor(public followupService : FollowupService,
@@ -41,10 +42,12 @@ export class MoviesComponent implements OnInit {
     this.isMesEnvies = true;
     this.selectedSortByCriteria = this.sortByCriteria[0];
     this.selectedFilterByNote = this.filterByNote[0];
+
+    /* Appel à l'API pour collecter les followUp du user */
     this.followupService.getMoviesWishListFromApi();
 
     /* Abonnement à la liste des envies */ 
-      this.followupService.moviesWishList$.subscribe(
+      this.followupService.seriesWishList$.subscribe(
         (data) => {
           // Récupère le nombre d'éléments de la liste
           this.wishListNb = data.length;
@@ -57,7 +60,7 @@ export class MoviesComponent implements OnInit {
         );
 
     /* Abonnement à la liste des déjà vus */ 
-        this.followupService.moviesSeenList$.subscribe(
+        this.followupService.seriesSeenList$.subscribe(
           (data) => {
             // Récupère le nombre d'éléments de la liste
             this.seenListNb = data.length;
@@ -70,17 +73,17 @@ export class MoviesComponent implements OnInit {
 
   onClickMesEnvies(){
     this.isMesEnvies = true;
-    this.followUpList = this.followupService.moviesWishList$.getValue();
+    this.followUpList = this.followupService.seriesWishList$.getValue();
   } 
 
   onClickDejaVus(){
     this.isMesEnvies = false;
-    this.followUpList = this.followupService.moviesSeenList$.getValue();
+    this.followUpList = this.followupService.seriesSeenList$.getValue();
   }
 
   openAddResourceDialog() {
     this.dialog.open(ResourceDialogComponent, {
-      data: { resourceType: ResourceType.movie, isMesEnvies : this.isMesEnvies },
+      data: { resourceType: ResourceType.serie, isMesEnvies : this.isMesEnvies },
       height: '95%',
       width: '40%'
     })
@@ -90,18 +93,17 @@ export class MoviesComponent implements OnInit {
     this.selectedSortByCriteria = selected;
     let followupListNull:Array<FollowUpModel>;
     let followupListNotNull:Array<FollowUpModel>;
-
     switch(selected.value){
       case "noteDesc" :
-        /* On classe les notes null à la fin de liste */
-        followupListNull = this.followupService.moviesSeenList$.getValue().filter(a => a.note == null);
-        followupListNotNull = this.followupService.moviesSeenList$.getValue().filter(a => a.note != null);
+        /* On classe les notes null en fin de liste */
+        followupListNull = this.followupService.seriesSeenList$.getValue().filter(a => a.note == null);
+        followupListNotNull = this.followupService.seriesSeenList$.getValue().filter(a => a.note != null);
         this.followUpList = [...followupListNotNull.sort((a, b) => b.note - a.note), ...followupListNull];
         break;
       case "noteAsc" :
-        /* On classe les notes null à la fin de liste */
-        followupListNull = this.followupService.moviesSeenList$.getValue().filter(a => a.note == null);
-        followupListNotNull = this.followupService.moviesSeenList$.getValue().filter(a => a.note != null);
+        /* On classe les notes null en fin de liste */
+        followupListNull = this.followupService.seriesSeenList$.getValue().filter(a => a.note == null);
+        followupListNotNull = this.followupService.seriesSeenList$.getValue().filter(a => a.note != null);
         this.followUpList = [...followupListNotNull.sort((a, b) => a.note - b.note), ...followupListNull];
         break;
       default :
@@ -113,19 +115,19 @@ export class MoviesComponent implements OnInit {
     this.selectedFilterByNote = selected;
     switch(selected.value){
       case "Top" :
-        this.followUpList = this.followupService.moviesSeenList$.getValue().filter(a => a.note === 3);
+        this.followUpList = this.followupService.seriesSeenList$.getValue().filter(a => a.note === 3);
         break;
       case "Bien" :
-        this.followUpList = this.followupService.moviesSeenList$.getValue().filter(a => a.note === 1);
+        this.followUpList = this.followupService.seriesSeenList$.getValue().filter(a => a.note === 1);
         break;
       case "Bof" :
-        this.followUpList = this.followupService.moviesSeenList$.getValue().filter(a => a.note === 0);
+        this.followUpList = this.followupService.seriesSeenList$.getValue().filter(a => a.note === 0);
         break;
       case "None" :
-        this.followUpList = this.followupService.moviesSeenList$.getValue().filter( a => a.note == null );
+        this.followUpList = this.followupService.seriesSeenList$.getValue().filter( a => a.note == null );
         break;
       default :
-        this.followUpList = this.followupService.moviesSeenList$.getValue();
+        this.followUpList = this.followupService.seriesSeenList$.getValue();
     }
   }
 

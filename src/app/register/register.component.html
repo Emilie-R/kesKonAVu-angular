@@ -5,9 +5,10 @@
             
             <!-- Champ email -->
             <mat-form-field>
-                <mat-label>Saisir votre email (facultatif) : </mat-label>
+                <mat-label>Saisir votre email : </mat-label>
                 <input matInput formControlName="email" type="email">
-                <mat-error *ngIf="registerForm.controls.email.invalid">{{ getEmailErrorMessage() }}</mat-error> 
+                <mat-error *ngIf="registerForm.controls.email.invalid
+                                && registerForm.controls.email.dirty">{{ getEmailErrorMessage() }}</mat-error> 
             </mat-form-field>
 
             <div class="field-spacer"></div>
@@ -16,7 +17,8 @@
             <mat-form-field>
                 <mat-label>Choisir un pseudo (6 caractères minimum): </mat-label>
                 <input matInput formControlName="pseudo" type="text">
-                <mat-error *ngIf="registerForm.controls.pseudo.invalid">{{ getPseudoErrorMessage() }}</mat-error>
+                <mat-error *ngIf="registerForm.controls.pseudo.invalid
+                                && registerForm.controls.pseudo.dirty">{{ getPseudoErrorMessage() }}</mat-error>
             </mat-form-field>
             
             <div class="field-spacer"></div>
@@ -25,7 +27,8 @@
             <mat-form-field>
                 <mat-label>Choisir un mot de passe (6 caractères minimum): </mat-label>
                 <input matInput formControlName="password" type="password"> 
-                <mat-error *ngIf="registerForm.controls.password.invalid">{{ getPasswordErrorMessage() }}</mat-error>
+                <mat-error *ngIf="registerForm.controls.password.invalid
+                                && registerForm.controls.password.dirty">{{ getPasswordErrorMessage() }}</mat-error>
             </mat-form-field>
 
             <div class="field-spacer"></div>
@@ -34,7 +37,8 @@
             <mat-form-field>
                 <mat-label>Confirmer le mot de passe : </mat-label>
                 <input matInput formControlName="confirmPassword" type="password"> 
-                <mat-error *ngIf="registerForm.controls.confirmPassword.invalid">{{ getConfirmPasswordErrorMessage() }}</mat-error>
+                <mat-error *ngIf="registerForm.controls.confirmPassword.invalid
+                                && registerForm.controls.confirmPassword.dirty">{{ getConfirmPasswordErrorMessage() }}</mat-error>
             </mat-form-field>
 
             <div class="field-spacer"></div>

@@ -6,7 +6,8 @@
             <mat-form-field>
                 <mat-label>Votre pseudo :</mat-label>
                 <input matInput formControlName="pseudo" type="text">
-                <mat-error *ngIf="loginForm.controls.pseudo.invalid">{{ getPseudoErrorMessage() }}</mat-error>
+                <mat-error *ngIf="loginForm.controls.pseudo.invalid 
+                                && loginForm.controls.pseudo.dirty">{{ getPseudoErrorMessage() }}</mat-error>
             </mat-form-field>
 
             <div class="field-spacer"></div>
@@ -15,7 +16,8 @@
             <mat-form-field>
                 <mat-label>Votre mot de passe :</mat-label>
                 <input matInput formControlName="password" type="password">
-                <mat-error *ngIf="loginForm.controls.password.invalid">{{ getPasswordErrorMessage() }}</mat-error>
+                <mat-error *ngIf="loginForm.controls.password.invalid
+                                && loginForm.controls.password.dirty">{{ getPasswordErrorMessage() }}</mat-error>
             </mat-form-field>
 
             <div class="field-spacer"></div>

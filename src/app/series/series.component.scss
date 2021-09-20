@@ -60,7 +60,7 @@ nav.member-content-submenu {
 }
 
 .member-content-submenu button{
-    background: black;
+    background: #181D21;
     font-family: 'Montserrat', sans-serif;
     text-transform: uppercase;
     color :white;
@@ -74,9 +74,21 @@ div.member-content-subtitle p {
     text-transform: uppercase;
 }
 
-div.member-content-filters {
+div.member-content-select {
     margin-bottom:32px;
+    display: flex;
+    justify-content: flex-start;
 }
+
+div.member-content-select button {
+    background: #181D21;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    margin-right: 40px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
 
 .movie-add-card mat-card{
     margin: 10px 5px 10px 0px;
@@ -106,21 +118,6 @@ div.member-content-filters {
     font-weight: 600;
     font-family: 'Montserrat', sans-serif;
     letter-spacing: 1px;
-}
-
-div.member-content-select {
-    margin-bottom:32px;
-    display: flex;
-    justify-content: flex-start;
-}
-
-div.member-content-select button {
-    background: #181D21;
-    color: white;
-    font-family: 'Montserrat', sans-serif;
-    margin-right: 40px;
-    font-size: 12px;
-    font-weight: 700;
 }
 
 button.mat-menu-item {

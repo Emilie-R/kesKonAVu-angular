@@ -1,22 +1,30 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
+import { ResourceType } from '../models/followup.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ResourceService {
 
-  constructor(private http: HttpClient) { }
-  API_URL = '/v1';
+  constructor(private http : HttpClient) { }
 
-  resource$ = new BehaviorSubject({});// pour gérer le click sur une ressource
 
-  getResourceFromApi(id:number) {
-    let req_url = this.API_URL + '/followup/' + id;
-    this.http.get(req_url)
-    .subscribe((response:any)=>console.log('data : ',response));
-    
+  getResourceByTitle(resourceType: ResourceType, searchValue:string){
+    /* Construire l'URL d'interrogation de l'API OMDB */
+    console.log(searchValue);
+    let url = environment.apiomdb + "&s=" + searchValue;
+
+    if (resourceType == ResourceType.movie){
+       url += "&type=movie";
+    } 
+    if (resourceType == ResourceType.serie){
+      url += "&type=series";
+   } 
+   console.log(url);
+    /*  Génerer la requête d'interrogation */
+      return this.http.get(url); 
   }
-}
 
+}

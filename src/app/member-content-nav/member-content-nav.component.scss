@@ -1,10 +1,16 @@
 
 nav {
-    width:180px;
+
     background-color: #272f36;
     border-right: 1px solid #656565;
     text-transform: uppercase;
     height: 100%;
+    width:180px;
+}
+
+mat-list.member-content-nav {
+    position: fixed;
+    width:180px;
 }
 
 .member-content-nav mat-list-item {

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { FollowupService } from './followup.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,8 @@ export class MemberService {
   loggedMember$ = new BehaviorSubject({});
 
   constructor(private http: HttpClient,
-              private route: Router ) { }
+              private route: Router,
+              private followupService: FollowupService ) { }
 
   loginMember(pseudo: string, password: string): Observable<any> {
     let url = "/v1/authenticate";
@@ -38,6 +40,7 @@ export class MemberService {
   logoutMember() {
     localStorage.removeItem('keskonavu-token');
     this.loggedMember$.next({});
+    this.followupService.initFollowUpLists();
     this.route.navigate(["/"]);
   }
 

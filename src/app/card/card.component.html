@@ -1,3 +1,42 @@
-<mat-card>
-    <img src="https://fr.web.img4.acsta.net/c_180_240/pictures/14/09/24/12/08/158828.jpg" alt="" mat-card-image>
-</mat-card>
+<div class="resource-card">
+        <mat-card>
+                <img [src]="followUp.pictureUrl" alt="" mat-card-image>
+                <button [matMenuTriggerFor]="menu">
+                        <mat-icon>more_horiz</mat-icon>
+                </button>
+                <mat-progress-bar mode="determinate" [value]="followUp.progression" *ngIf="isSerie && !isWish">
+                </mat-progress-bar>
+                <mat-card-content>
+                        <div class="card-title">{{ getCutTitle() }} </div>
+                        <div *ngIf="isSerie && !isWish" [class.card-episodes]="followUp.numberUnseenEpisodes>0">
+                                {{followUp.numberUnseenEpisodes}} épisodes à voir</div>
+                </mat-card-content>
+        </mat-card>
+</div>
+
+<mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="goToDetailPage()"><i class="fa fa-search-plus" aria-hidden="true"></i>Plus de
+                détails</button>
+        <mat-divider></mat-divider>
+
+        <button mat-menu-item *ngIf="isSerie && !isWish" (click)="openEpisodeProgression()"><i class="fa fa-pencil"
+                        aria-hidden="true"></i>Modifier ma progression</button>
+        <mat-divider *ngIf="isSerie && !isWish"></mat-divider>
+
+        <button mat-menu-item *ngIf="isMovie && isWish" (click)="setFollowupStatus()"><i class="fa fa-eye"
+                        aria-hidden="true"></i>Je l'ai vu !</button>
+        <mat-divider *ngIf="isMovie && isWish"></mat-divider>
+
+        <button mat-menu-item *ngIf="isSerie && isWish" (click)="setFollowupStatus()"><i class="fa fa-eye"
+                        aria-hidden="true"></i>Je suis la série</button>
+        <mat-divider *ngIf="isSerie && isWish"></mat-divider>
+
+        <button mat-menu-item *ngIf="!isWish" 
+                        (click)="deleteFollowUp(followUp)"><i class="fa fa-trash" aria-hidden="true"></i>Ne plus
+                suivre</button>
+        <mat-divider *ngIf="!isWish" ></mat-divider>
+
+        <button mat-menu-item *ngIf="isWish" 
+                (click)="deleteFollowUp(followUp)"><i class="fa fa-trash" aria-hidden="true"></i>Retirer des envies</button>
+        <mat-divider *ngIf="isWish" ></mat-divider>
+</mat-menu>

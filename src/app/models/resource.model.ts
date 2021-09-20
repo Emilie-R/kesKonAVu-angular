@@ -17,6 +17,9 @@ export class ResourceModel {
     this.director = resourceData.director;
     this.duration = resourceData.duration;
     this.type = resourceData.resourceType;
+    this.synopsis = resourceData.synopsis;
+    this.year = resourceData.year;
+
 
    }
 }

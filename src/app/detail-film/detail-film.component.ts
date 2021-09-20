@@ -19,11 +19,11 @@ export class DetailFilmComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    this.subscription = this.resourceSvc.resource$
-    .subscribe((resource)=> this.resource = resource)
-    if(this.resource.type == "serie"){
-      this.isSerie = true;
+    // this.subscription = this.resourceSvc.resource$
+    // .subscribe((resource)=> this.resource = resource)
+    // if(this.resource.type == "serie"){
+    //   this.isSerie = true;
     }
-  }
+  
 
 }

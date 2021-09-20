@@ -7,7 +7,7 @@ import { RateComponent } from '../rate/rate.component';
 import { FollowupService } from '../services/followup.service';
 
 export interface DialogData {
-  followUp:FollowUpModel;
+  followUpData:FollowUpModel;
 }
 
 @Component({
@@ -19,25 +19,25 @@ export class CardComponent implements OnInit {
 
   @Input() followUp!:FollowUpModel | undefined; 
 
-  constructor(public dialog: MatDialog,
+  constructor(private dialog: MatDialog,
     private followupService : FollowupService) { }
 
   ngOnInit(): void {
-    // si retour de la modale de notation
-    if (this.followUp.note != this.followupService.followUpRated.note
-      && this.followupService.followUpRated.note != null){
-        this.followUp.note = this.followupService.followUpRated.note;
-    }
+    
   }
 
   goToDetailPage(){
+
+    if(this.followupService.followUpRated != null){
+      this.followUp = this.followupService.followUpRated
+    }
     
     // Ouvrir une modale(boîte de dialogue) qui contient un template HTML du détail
       // On utilise MatDialog
       this.dialog.open(DetailComponent, {
         width:'50%',
         panelClass:'my-panel-dialog',
-        data: {followUp:this.followUp}
+        data: {followUpData:this.followUp}
       });
 
    }
@@ -45,10 +45,27 @@ export class CardComponent implements OnInit {
     
     // Ouvrir une modale(boîte de dialogue) qui contient un template HTML du détail
       // On utilise MatDialog
-      this.dialog.open(RateComponent, {
+      const dialogRef = this.dialog.open(RateComponent, {
         width:'50%',
         panelClass:'my-panel-dialog',
-        data: {followUp:this.followUp}
+        data: {followUpData:this.followUp}
+      });
+      // sauvegarde du followUp avant màj
+      this.followupService.followUpBefore = this.followUp;
+
+
+      dialogRef.afterClosed().subscribe(result => {
+       
+            this.followUp.note = this.followupService.followUpRated.note;
+
+            //màj note dans la bdd : à optimiser
+
+            this.followupService.updateFollowup(this.followUp.idFollowUp,this.followUp.note,this.followUp.status)
+            .subscribe(
+              // (data)=> console.log(data)
+            )
+        
+
       });
    }
 

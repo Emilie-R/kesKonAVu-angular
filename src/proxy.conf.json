@@ -16,7 +16,7 @@
         "secure": false,
         "logLevel": "debug"
     },
-    "/v1/followup/": {
+    "/v1/followup/update": {
         "target": "http://localhost:8080",
         "secure": false,
         "logLevel": "debug"

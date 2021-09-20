@@ -20,12 +20,14 @@ export class RateComponent implements OnInit {
 
   ngOnInit(): void {
     // récupération de la note du followUp si elle est renseignée
-    this.data.followUp.note < 1 ? this.isNo = true : (this.data.followUp.note == 1 ? this.isNone = true : this.isYes = true);
+    this.data.followUpData.note < 1 ? this.isNo = true : (this.data.followUpData.note == 1 ? this.isNone = true : this.isYes = true);
   }
 
   onClose(): void {
     // sauvegarde de la note
-    this.followupService.followUpRated = this.data.followUp;
+    console.log('note dans RateComponent', this.data.followUpData.note, 'note avant',this.followupService.followUpBefore.note)
+    
+    this.followupService.followUpRated = this.data.followUpData;
     
     this.dialogRef.close();
   }
@@ -34,17 +36,27 @@ export class RateComponent implements OnInit {
 
 
       this.isNo = !this.isNo;
-      this.data.followUp.note = 0;
+      if(this.isNo) {
+        this.data.followUpData.note = 0;}
       this.isNone = false;
       this.isYes = false;
+      //pas d enote équivalent à note = 0
+    if(!this.isNone && !this.isNo && !this.isYes){
+      this.data.followUpData.note = 0;
+
+    }
   }
   onClickNone(){
-
-
     this.isNo = false;
     this.isNone = !this.isNone;
-    this.data.followUp.note = 1;
+    if(this.isNone){
+      this.data.followUpData.note = 1;}
     this.isYes = false;
+    //pas d enote équivalent à note = 0
+    if(!this.isNone && !this.isNo && !this.isYes){
+      this.data.followUpData.note = 0;
+
+    }
 }
 onClickYes(){
 
@@ -52,7 +64,13 @@ onClickYes(){
   this.isNo = false;
   this.isNone = false;
   this.isYes = !this.isYes;
-  this.data.followUp.note = 3;
+  if(this.isYes){
+  this.data.followUpData.note = 3;}
+  //pas d enote équivalent à note = 0
+  if(!this.isNone && !this.isNo && !this.isYes){
+    this.data.followUpData.note = 0;
+
+  }
 }
 
 }

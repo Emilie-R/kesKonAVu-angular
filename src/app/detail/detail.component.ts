@@ -17,17 +17,17 @@ export class DetailComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
 
   ngOnInit(): void {
-    if(this.data.followUp.note < 1){
+    if(this.data.followUpData.note < 1){
 
       this.isNo = true;
 
     }
-    if(this.data.followUp.note == 1){
+    if(this.data.followUpData.note == 1){
 
       this.isNone = true;
 
     }
-    if(this.data.followUp.note > 1){
+    if(this.data.followUpData.note > 1){
 
       this.isYes = true;
 

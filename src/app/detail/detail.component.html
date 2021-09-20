@@ -4,16 +4,16 @@
         <mat-card class="example-card">
         <mat-card-header>
          <div mat-card-avatar class="example-header-image"></div>
-         <mat-card-title>{{data.followUp.title}}</mat-card-title>
+         <mat-card-title>{{data.followUpData.title}}</mat-card-title>
         </mat-card-header>
-        <img mat-card-image src="{{data.followUp.resource.pictureurl}}" alt="Not available">
+        <img mat-card-image src="{{data.followUpData.resource.pictureurl}}" alt="Not available">
         <mat-card-content class="d-flex flex-column">
-        <p>{{data.followUp.resource.synopsis}}</p>
-        <mat-label>Année : <i>{{data.followUp.resource.year}}</i></mat-label>
-        <mat-label>Réalisateur : <i>{{data.followUp.resource.director}}</i></mat-label>
-        <mat-label>Acteurs : <i>{{data.followUp.resource.actors}}</i></mat-label>
-        <mat-label>Durée : <i>{{data.followUp.resource.duration}}</i></mat-label>
-        <mat-label>Statut : <i>{{data.followUp.status}}</i></mat-label>
+        <p>{{data.followUpData.resource.synopsis}}</p>
+        <mat-label>Année : <i>{{data.followUpData.resource.year}}</i></mat-label>
+        <mat-label>Réalisateur : <i>{{data.followUpData.resource.director}}</i></mat-label>
+        <mat-label>Acteurs : <i>{{data.followUpData.resource.actors}}</i></mat-label>
+        <mat-label>Durée : <i>{{data.followUpData.resource.duration}}</i></mat-label>
+        <mat-label>Statut : <i>{{data.followUpData.status}}</i></mat-label>
         <div class="d-flex align-items-center">
             <mat-label>Note :</mat-label>
             <i *ngIf="isNo" class="far fa-meh fa-3x"></i>
@@ -27,5 +27,5 @@
     </mat-card>
 </mat-dialog-content>
 <mat-dialog-actions>
-    <button mat-button (click)="onClose()">Close</button>
+    <button mat-button (click)="onClose()">Fermer</button>
 </mat-dialog-actions>

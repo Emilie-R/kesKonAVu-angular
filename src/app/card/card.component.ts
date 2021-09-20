@@ -92,7 +92,17 @@ export class CardComponent implements OnInit {
   }
 
   setFollowupStatus() {
-    alert ("Mise à jour du statut du followup");
+
+    if(this.isWish){
+      this.followUp.status = Status.vu;
+    } else {
+      this.followUp.status = Status.avoir;
+    }
+
+    this.followupService.updateFollowup(this.followUp.idFollowUp,this.followUp.note,this.followUp.status)
+            .subscribe(
+              // (data)=> console.log(data)
+            )
   }
 
 }

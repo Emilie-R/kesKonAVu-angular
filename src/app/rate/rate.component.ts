@@ -25,7 +25,7 @@ export class RateComponent implements OnInit {
 
   onClose(): void {
     // sauvegarde de la note
-    console.log('note dans RateComponent', this.data.followUpData.note, 'note avant',this.followupService.followUpBefore.note)
+    // console.log('note dans RateComponent', this.data.followUpData.note, 'note avant',this.followupService.followUpBefore.note)
     
     this.followupService.followUpRated = this.data.followUpData;
     

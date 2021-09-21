@@ -22,6 +22,8 @@ export class CardComponent implements OnInit {
   isMovie:boolean;
   isWish:boolean;
 
+  oldNote:number=0;
+
   constructor(private dialog: MatDialog,
     private followupService : FollowupService) { 
   }
@@ -32,6 +34,7 @@ export class CardComponent implements OnInit {
     this.isSerie = this.followUp.resourceType == ResourceType.serie;
     this.isMovie = this.followUp.resourceType == ResourceType.movie;
     this.isWish = this.followUp.status == Status.avoir;
+    if(this.followUp.note > 0){this.oldNote=this.followUp.note};
   }
 
 
@@ -72,11 +75,14 @@ export class CardComponent implements OnInit {
             this.followUp.note = this.followupService.followUpRated.note;
 
             //màj note dans la bdd : à optimiser
-
-            this.followupService.updateFollowup(this.followUp.idFollowUp,this.followUp.note,this.followUp.status)
-            .subscribe(
-              // (data)=> console.log(data)
-            )
+            if(this.oldNote != this.followUp.note){
+              this.followupService.updateFollowup(this.followUp.idFollowUp,this.followUp.note,this.followUp.status)
+              .subscribe(
+                // (data)=> console.log(data)
+              )
+              // réactualisation sauvegarde note du followUp
+              this.oldNote = this.followUp.note;
+          }
         
 
       });

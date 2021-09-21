@@ -4,6 +4,14 @@
                 <button [matMenuTriggerFor]="menu">
                         <mat-icon>more_horiz</mat-icon>
                 </button>
+                <div *ngIf="followUp.note!=null" class="note-holder" (click)="goToRate()">
+                        <i *ngIf="followUp.note == 0" class="far fa-meh fa-3x" 
+                        style="color:rgb(247, 38, 30)"></i>
+                        <i *ngIf="followUp.note == 1" class="far fa-smile fa-3x" 
+                        style="color:hsl(39, 93%, 63%)"></i>
+                        <i *ngIf="followUp.note == 3" class="far fa-grin-stars fa-3x" 
+                        style="color:#48f848"></i>
+                </div>
                 <mat-progress-bar mode="determinate" [value]="followUp.progression" *ngIf="isSerie && !isWish">
                 </mat-progress-bar>
                 <mat-card-content>

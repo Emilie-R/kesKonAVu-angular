@@ -112,33 +112,10 @@ export class FollowupService {
   deleteFollowUp(followUp) {
     this.http.delete("/v1/followup/" + followUp.idFollowUp).subscribe();
 
-    if (followUp.status == Status.avoir && followUp.resourceType == ResourceType.movie) {
-      let newList = this.moviesWishList$.getValue();
-      newList = newList.filter((item:FollowUpModel) => item.idFollowUp != followUp.idFollowUp);
-
-      this.moviesWishList$.next(newList);
-    }
-
-    if (followUp.status == Status.vu && followUp.resourceType == ResourceType.movie) {
-      let newList = this.moviesSeenList$.getValue();
-      newList = newList.filter((item:FollowUpModel) => item.idFollowUp != followUp.idFollowUp);
-
-      this.moviesSeenList$.next(newList);
-    }
-
-    if (followUp.status == Status.avoir && followUp.resourceType == ResourceType.serie) {
-      let newList = this.seriesWishList$.getValue();
-      newList = newList.filter((item:FollowUpModel) => item.idFollowUp != followUp.idFollowUp);
-
-      this.seriesWishList$.next(newList);
-    }
-
-    if (followUp.status = Status.vu && followUp.resourceType == ResourceType.serie) {
-      let newList = this.seriesSeenList$.getValue();
-      newList = newList.filter((item:FollowUpModel) => item.idFollowUp != followUp.idFollowUp);
-
-      this.seriesSeenList$.next(newList);
-    }
+    /*Cibler et mettre à jour la liste de followUp*/
+    let newList = this.getOneFollowUpList(followUp.status, followUp.resourceType);
+    newList = newList.filter((item:FollowUpModel) => item.idFollowUp != followUp.idFollowUp);
+    this.UpdateOneFollowUpList(followUp.status, followUp.resourceType, newList);
   }
 
   initFollowUpLists() {
@@ -170,8 +147,6 @@ export class FollowupService {
 
       let FollowUpPosition = newList.findIndex((s:FollowUpModel) => s.idFollowUp == followUp.idFollowUp);
       newList[FollowUpPosition] = newFollowUp;
-
-      console.log(newList);
 
       /* Mettre à jour la liste de followUp concernée*/
       this.UpdateOneFollowUpList(followUp.status,followUp.resourceType,newList);

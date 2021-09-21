@@ -16,6 +16,21 @@ mat-card img.mat-card-image {
     position: relative;
 }
 
+mat-card div.note-holder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width:35px;
+    text-align: center;
+    font-size: 11px;
+    background: black;
+    border-radius: 3px;
+}
+
+mat-card div.note-holder:hover {
+    cursor: pointer;
+}
+
 mat-card button {
     border-radius:3px;
     border: none;

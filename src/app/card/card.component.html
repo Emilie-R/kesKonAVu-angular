@@ -24,21 +24,21 @@
         <mat-divider *ngIf="isSerie && !isWish"></mat-divider>
 
         <!--  icône yeux 'à voir' -->
-        <button mat-menu-item *ngIf="isMovie && isWish" (click)="setFollowupStatus()"><i class="fa fa-eye-slash"
+        <button mat-menu-item *ngIf="isMovie && isWish" (click)="setFollowupStatus()"><i class="fa fa-eye"
                         aria-hidden="true"></i>A voir</button>
         <mat-divider *ngIf="isMovie && isWish"></mat-divider>
 
-        <button mat-menu-item *ngIf="isSerie && isWish" (click)="setFollowupStatus()"><i class="fa fa-eye-slash"
+        <button mat-menu-item *ngIf="isSerie && isWish" (click)="setFollowupStatus()"><i class="fa fa-eye"
                         aria-hidden="true"></i>A suivre</button>
         <mat-divider *ngIf="isSerie && isWish"></mat-divider>
         
         <!--  icône yeux 'déjà vus' -->
-        <button mat-menu-item *ngIf="isMovie && !isWish" (click)="setFollowupStatus()"><i class="fa fa-eye"
-                aria-hidden="true"></i>Je l'ai vu !</button>
+        <button mat-menu-item *ngIf="isMovie && !isWish" (click)="setFollowupStatus()"><i class="fa fa-eye-slash"
+                aria-hidden="true"></i>Je l'ai pas vu en fait <i class="far fa-grin-beam-sweat"></i></button>
         <mat-divider *ngIf="isMovie && !isWish"></mat-divider>
 
-        <button mat-menu-item *ngIf="isSerie && !isWish" (click)="setFollowupStatus()"><i class="fa fa-eye"
-                        aria-hidden="true"></i>Je suis la série</button>
+        <button mat-menu-item *ngIf="isSerie && !isWish" (click)="setFollowupStatus()"><i class="fa fa-eye-slash"
+                        aria-hidden="true"></i>Retour aux envies</button>
         <mat-divider *ngIf="isSerie && !isWish"></mat-divider>
 
         <!-- vu  -->

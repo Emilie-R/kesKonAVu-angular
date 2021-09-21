@@ -1,0 +1,30 @@
+.example-headers-align .mat-expansion-panel-header-title,
+.example-headers-align .mat-expansion-panel-header-description {
+  flex-basis: 0;
+}
+
+.example-headers-align .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.example-headers-align .mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
+bottom i .fa-grin-beam-sweat{
+  margin-left: 5px;
+}
+.enregistrer{
+  margin-top: 10px;
+  background: rgb(176, 90, 194);
+}
+.annuler{
+  margin-top: 10px;
+  background: rgb(202, 199, 199);
+}
+.vu {
+  color: green;
+}
+div mat-label{
+  margin-right: 10px;
+}

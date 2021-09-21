@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DetailComponent } from '../detail/detail.component';
 import { FollowUpModel, ResourceType, Status } from '../models/followup.model';
+import { ProgressionComponent } from '../progression/progression.component';
 import { RateComponent } from '../rate/rate.component';
 import { FollowupService } from '../services/followup.service';
 
@@ -94,7 +95,12 @@ export class CardComponent implements OnInit {
   }
 
   openEpisodeProgression() {
-    alert("Restitution de la progression par épisodes");
+    const dialogRefEP = this.dialog.open(ProgressionComponent, {
+      width:'70%',
+      panelClass:'my-panel-dialog',
+      data: {followUpData:this.followUp}
+    });
+ 
   }
 
   setFollowupStatus() {

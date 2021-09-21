@@ -213,6 +213,9 @@ export class FollowupService {
           break;
       }
     }
+
+  getFollowUpListOfEpisodesFromApi(id:number):Observable<any> {
+    return this.http.get("/v1/progression/edit/" + id);
   }
-
-
+  
+}

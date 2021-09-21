@@ -25,6 +25,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { MoviesComponent } from './movies/movies.component';
@@ -38,6 +39,7 @@ import { FollowupNoteComponent } from './followup-note/followup-note.component';
 import { DetailComponent } from './detail/detail.component';
 import { RateComponent } from './rate/rate.component';
 import { AuthGuard } from './guards/auth.guard';
+import { ProgressionComponent } from './progression/progression.component';
 
 
 @NgModule({
@@ -58,7 +60,8 @@ import { AuthGuard } from './guards/auth.guard';
     ResourceDialogComponent,
     FollowupNoteComponent,
     DetailComponent,
-    RateComponent
+    RateComponent,
+    ProgressionComponent
   ],
   imports: [
     BrowserModule,
@@ -67,6 +70,7 @@ import { AuthGuard } from './guards/auth.guard';
     BrowserAnimationsModule,
     MatButtonModule, MatDividerModule, MatIconModule, MatInputModule, MatCardModule, MatListModule, MatSnackBarModule,
     MatMenuModule, MatProgressBarModule, MatDialogModule, MatProgressSpinnerModule, MatSelectModule, MatFormFieldModule,
+    MatExpansionModule,
     ReactiveFormsModule
   ],
   providers: [{provide:HTTP_INTERCEPTORS, useClass:TokenInterceptor, multi:true},

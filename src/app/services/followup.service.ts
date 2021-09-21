@@ -18,9 +18,6 @@ export class FollowupService {
   // pour modifier la note du followUp
   followUpRated:FollowUpModel;
   followUpBefore:FollowUpModel;
-  //variables pour afficher écran progression
-  episodeFollowUpList:Array<any>;
-  listOfSeasonNumber:Array<number>;
 
   constructor(private http : HttpClient) { 
 
@@ -158,32 +155,7 @@ export class FollowupService {
     return this.http.put(url, body);
   }
 
-  getFollowUpListOfEpisodesFromApi(id:number){
-    this.http.get("/v1/progression/edit/" + id).subscribe(
-      (data:any) => {
-                  // tri par numéro saison puis numéro épisode
-                  this.episodeFollowUpList = data.episodeFollowUpDTOList.sort(
-                  (a,b) => a.episode.seasonNumber - b.episode.seasonNumber || a.episode.number - b.episode.number);
-                  this.listOfSeasonNumber = data.episodeFollowUpDTOList.map(
-                      e => {
-                      var rObj = [];
-                      rObj.push(e.episode.seasonNumber);
-                      // obtention d'un array constitué d'array à un seul élément
-                      return rObj;
-                      }
-
-                   );
-                   // constitution d'un array<number>
-                   this.listOfSeasonNumber = this.listOfSeasonNumber.reduce(
-                    function(previousValue, currentValue) {
-                      return previousValue.concat(currentValue)
-                    },
-                    []
-                  )
-                  // suppression des doublons
-                  this.listOfSeasonNumber = Array.from(new Set(this.listOfSeasonNumber));
-              }
-            )     
-
+  getFollowUpListOfEpisodesFromApi(id:number):Observable<any>{
+    return this.http.get("/v1/progression/edit/" + id);
   }
 }

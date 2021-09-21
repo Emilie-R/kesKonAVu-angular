@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { FollowUpModel, ResourceType, Status } from '../models/followup.model';
 import { map } from 'rxjs/operators';
+import { ResourceModel } from '../models/resource.model';
 
 @Injectable({
   providedIn: 'root'
@@ -35,7 +36,8 @@ export class FollowupService {
       this.http.get("/v1/member/followups")
         .pipe(
           map((response:any) =>
-          { return response.resourceFollowUpS.map(followUp => new FollowUpModel(followUp));}
+          { console.log(response);
+            return response.resourceFollowUpS.map(followUp => new FollowUpModel(followUp));}
           ))
         .subscribe(
           (data:Array<FollowUpModel>) =>
@@ -72,6 +74,8 @@ export class FollowupService {
         }
       }
     
+    console.log(followUpToCreate);
+
     this.http.post("/v1/followup/create", followUpToCreate).subscribe(
       (data) => {
         
@@ -129,7 +133,7 @@ export class FollowupService {
       this.seriesWishList$.next(newList);
     }
 
-    if (followUp.status = Status.vu && followUp.resourceType == ResourceType.movie) {
+    if (followUp.status = Status.vu && followUp.resourceType == ResourceType.serie) {
       let newList = this.seriesSeenList$.getValue();
       newList = newList.filter((item:FollowUpModel) => item.idFollowUp != followUp.idFollowUp);
 
@@ -154,4 +158,61 @@ export class FollowupService {
     // return this.http.put(url, body, { headers });
     return this.http.put(url, body);
   }
-}
+
+  updateResourceFollowUpinFollowUpsList(followUp:FollowUpModel, resource:ResourceModel){    
+      /*Recherche de la liste de followUp à actualiser */
+      let newList = null;
+      
+      newList = this.getOneFollowUpList(followUp.status, followUp.resourceType);
+
+      let newFollowUp = followUp;
+      newFollowUp.resource = resource;
+
+      let FollowUpPosition = newList.findIndex((s:FollowUpModel) => s.idFollowUp == followUp.idFollowUp);
+      newList[FollowUpPosition] = newFollowUp;
+
+      console.log(newList);
+
+      /* Mettre à jour la liste de followUp concernée*/
+      this.UpdateOneFollowUpList(followUp.status,followUp.resourceType,newList);
+    }
+
+    getOneFollowUpList(status:Status, resourceType:ResourceType):any {
+      let newList:any = null;
+  
+      switch(status + resourceType) {
+        case (Status.avoir + ResourceType.movie) :
+          newList = this.moviesWishList$.getValue();
+          break;
+        case (Status.vu + ResourceType.movie) :
+          newList = this.moviesSeenList$.getValue();
+          break;
+        case (Status.avoir + ResourceType.serie) :
+          newList = this.seriesWishList$.getValue();
+          break;
+        case (Status.vu + ResourceType.serie) :
+          newList = this.seriesSeenList$.getValue();
+          break;
+      }
+      return newList;
+    }
+
+    UpdateOneFollowUpList(status:Status, resourceType:ResourceType, newList:any) {
+      switch(status + resourceType) {
+        case (Status.avoir + ResourceType.movie) :
+          this.moviesWishList$.next(newList);
+          break;
+        case (Status.vu + ResourceType.movie) :
+          newList = this.moviesSeenList$.next(newList);
+          break;
+        case (Status.avoir + ResourceType.serie) :
+          newList = this.seriesWishList$.next(newList);
+          break;
+        case (Status.vu + ResourceType.serie) :
+          newList = this.seriesSeenList$.next(newList);
+          break;
+      }
+    }
+  }
+
+

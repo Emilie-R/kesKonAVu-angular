@@ -12,3 +12,26 @@ div.appli-member {
     background: rgb(176, 90, 194);
     margin: 5px 0px 5px 10px;
 }
+
+p.member-menu {
+    padding-left: 8px;
+    padding-right: 8px;
+    text-align: center;
+    font-size: 12px;
+    font-family: 'Montserrat', sans-serif;
+}
+p.member-menu em {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+button.member-menu {
+    padding-left: 8px;
+    padding-right: 8px;
+    font-size: 12px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+button.member-menu:hover{
+    background-color: rgba(176, 90, 194, 0.5);
+}

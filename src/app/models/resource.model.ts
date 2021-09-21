@@ -1,5 +1,5 @@
 export class ResourceModel {
-    idResource:number;
+idResource:number;
    title:string;
    year:string;
    pictureurl:string;

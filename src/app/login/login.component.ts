@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
             this.loginForm.reset();
             // Traiter les erreurs renvoyés par le service d'authentification
             switch (error.status) {
-              case 404:
+              case 401:
                 this.snackBar.open("pseudo/ mot de passe invalides", "Fermer", {
                   horizontalPosition: 'center',
                   verticalPosition: 'top'

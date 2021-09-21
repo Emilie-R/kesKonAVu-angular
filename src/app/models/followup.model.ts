@@ -22,11 +22,11 @@ export class FollowUpModel {
     this.progression = followupData.progression;
     this.numberUnseenEpisodes = followupData.numberOfUnseenEpisodes;
     
-    this.idImdb = followupData.resourceDTO.idImdb;
-    this.title = followupData.resourceDTO.title;
-    this.resourceType = followupData.resourceDTO.resourceType;
-    this.pictureUrl = followupData.resourceDTO.pictureUrl;
-    this.resource = new ResourceModel(followupData.resourceDTO);
+    this.idImdb = followupData.Resource.imdbId;
+    this.title = followupData.Resource.title;
+    this.resourceType = followupData.Resource.resourceType;
+    this.pictureUrl = followupData.Resource.pictureUrl;
+    this.resource = new ResourceModel(followupData.Resource);
 
    }
 }

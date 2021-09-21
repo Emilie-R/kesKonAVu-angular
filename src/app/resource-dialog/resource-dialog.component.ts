@@ -53,7 +53,7 @@ export class ResourceDialogComponent implements OnInit {
       this.resourceResults = [];
       return;
     }
-    this.resourceService.getResourceByTitle(this.resourceTypeToCreate, userSearchText).subscribe(
+    this.resourceService.getResourcesFromOMDBByTitle(this.resourceTypeToCreate, userSearchText).subscribe(
       (data:any) => {
 
         if (data.Response == "True") {

@@ -27,6 +27,18 @@
         "target": "http://localhost:8080",
         "secure": false,
         "logLevel": "debug"
+    },
+
+    "/v1/movie/id/" : {
+        "target": "http://localhost:8080",
+        "secure": false,
+        "logLevel": "debug"
+    },
+
+    "/v1/serie/id/" : {
+        "target": "http://localhost:8080",
+        "secure": false,
+        "logLevel": "debug"
     }
 
 }

@@ -34,7 +34,13 @@ export class MemberService {
   }
 
   isLog(){
-
+    /* Considère l'user loggé si présence du token dans le navigateur */
+    /* => TODO : Contrôle de la validité du token (appel au back + mise à jour du loggedMember$*/
+    if (localStorage.getItem('keskonavu-token') != null) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   logoutMember() {

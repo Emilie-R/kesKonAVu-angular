@@ -3,7 +3,16 @@
     <!--Si connecté : affichage du pseudo et bouton de déconnexion au survol-->
     {{loggedMember.pseudo}}
     <button mat-mini-fab
-    (click)="OnClickLogOut()" class="logout-btn">
+    [matMenuTriggerFor]="menu" class="logout-btn">
       <mat-icon>person</mat-icon>
     </button>
 </div>
+
+<mat-menu #menu="matMenu" >
+  <p class="member-menu"><em>{{loggedMember.pseudo}}</em></p>
+  <p class="member-menu">Dernière connexion : {{loggedMember.lastConnexionDateTime| date: 'dd/MM/YYYY à HH:mm'}} </p>
+  <mat-divider></mat-divider>
+  <button mat-menu-item (click)="OnClickLogOut()" class="member-menu">
+    <i class="fa fa-power-off" aria-hidden="true"></i> Déconnexion </button>
+    <mat-divider></mat-divider>
+</mat-menu>

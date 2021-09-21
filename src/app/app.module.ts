@@ -37,6 +37,7 @@ import { ResourceDialogComponent } from './resource-dialog/resource-dialog.compo
 import { FollowupNoteComponent } from './followup-note/followup-note.component';
 import { DetailComponent } from './detail/detail.component';
 import { RateComponent } from './rate/rate.component';
+import { AuthGuard } from './guards/auth.guard';
 
 
 @NgModule({
@@ -68,7 +69,8 @@ import { RateComponent } from './rate/rate.component';
     MatMenuModule, MatProgressBarModule, MatDialogModule, MatProgressSpinnerModule, MatSelectModule, MatFormFieldModule,
     ReactiveFormsModule
   ],
-  providers: [{provide:HTTP_INTERCEPTORS, useClass:TokenInterceptor, multi:true}],
+  providers: [{provide:HTTP_INTERCEPTORS, useClass:TokenInterceptor, multi:true},
+              AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

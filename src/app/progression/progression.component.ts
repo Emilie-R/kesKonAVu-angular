@@ -17,6 +17,7 @@ export class ProgressionComponent implements OnInit {
 
   ngOnInit(): void {
     this.step = 0;
+    this.followupService.getFollowUpListOfEpisodesFromApi(this.data.followUpData.idFollowUp)
   }
 
   setStep(index: number) {

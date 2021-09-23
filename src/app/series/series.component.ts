@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
-import { FollowUpModel, ResourceType } from '../models/followup.model';
+import { FollowUpModel, ResourceType, Status } from '../models/followup.model';
 import { ResourceDialogComponent } from '../resource-dialog/resource-dialog.component';
 import { FollowupService } from '../services/followup.service';
+import { ListFollowupsService } from '../services/list-followups.service';
 
 @Component({
   selector: 'app-series',
@@ -36,6 +37,7 @@ export class SeriesComponent implements OnInit {
   subcriptions!:[Subscription];
 
   constructor(public followupService : FollowupService,
+              public listFollowupsService : ListFollowupsService,
               private dialog : MatDialog) { }
 
   ngOnInit(): void {
@@ -44,10 +46,10 @@ export class SeriesComponent implements OnInit {
     this.selectedFilterByNote = this.filterByNote[0];
 
     /* Appel à l'API pour collecter les followUp du user */
-    this.followupService.getMoviesWishListFromApi();
+    this.listFollowupsService.getResourcesListsFromApi(ResourceType.serie);
 
     /* Abonnement à la liste des envies */ 
-      this.followupService.seriesWishList$.subscribe(
+      this.listFollowupsService.seriesWishList$.subscribe(
         (data) => {
           // Récupère le nombre d'éléments de la liste
           this.wishListNb = data.length;
@@ -60,7 +62,7 @@ export class SeriesComponent implements OnInit {
         );
 
     /* Abonnement à la liste des déjà vus */ 
-        this.followupService.seriesSeenList$.subscribe(
+        this.listFollowupsService.seriesSeenList$.subscribe(
           (data) => {
             // Récupère le nombre d'éléments de la liste
             this.seenListNb = data.length;
@@ -73,12 +75,12 @@ export class SeriesComponent implements OnInit {
 
   onClickMesEnvies(){
     this.isMesEnvies = true;
-    this.followUpList = this.followupService.seriesWishList$.getValue();
+    this.followUpList = this.listFollowupsService.seriesWishList$.getValue();
   } 
 
   onClickDejaVus(){
     this.isMesEnvies = false;
-    this.followUpList = this.followupService.seriesSeenList$.getValue();
+    this.followUpList = this.listFollowupsService.seriesSeenList$.getValue();
   }
 
   openAddResourceDialog() {
@@ -91,44 +93,13 @@ export class SeriesComponent implements OnInit {
 
   onChangeSortByCriteria(selected:any) {
     this.selectedSortByCriteria = selected;
-    let followupListNull:Array<FollowUpModel>;
-    let followupListNotNull:Array<FollowUpModel>;
-    switch(selected.value){
-      case "noteDesc" :
-        /* On classe les notes null en fin de liste */
-        followupListNull = this.followupService.seriesSeenList$.getValue().filter(a => a.note == null);
-        followupListNotNull = this.followupService.seriesSeenList$.getValue().filter(a => a.note != null);
-        this.followUpList = [...followupListNotNull.sort((a, b) => b.note - a.note), ...followupListNull];
-        break;
-      case "noteAsc" :
-        /* On classe les notes null en fin de liste */
-        followupListNull = this.followupService.seriesSeenList$.getValue().filter(a => a.note == null);
-        followupListNotNull = this.followupService.seriesSeenList$.getValue().filter(a => a.note != null);
-        this.followUpList = [...followupListNotNull.sort((a, b) => a.note - b.note), ...followupListNull];
-        break;
-      default :
-        this.followUpList = this.followUpList.sort((a, b) => b.lastModification - a.lastModification);
-    }
+    this.followUpList = this.listFollowupsService.sortListByCriteria(ResourceType.serie, Status.vu, selected.value);
   }
 
   onChangeFilterByCriteria(selected:any) {
     this.selectedFilterByNote = selected;
-    switch(selected.value){
-      case "Top" :
-        this.followUpList = this.followupService.seriesSeenList$.getValue().filter(a => a.note === 3);
-        break;
-      case "Bien" :
-        this.followUpList = this.followupService.seriesSeenList$.getValue().filter(a => a.note === 1);
-        break;
-      case "Bof" :
-        this.followUpList = this.followupService.seriesSeenList$.getValue().filter(a => a.note === 0);
-        break;
-      case "None" :
-        this.followUpList = this.followupService.seriesSeenList$.getValue().filter( a => a.note == null );
-        break;
-      default :
-        this.followUpList = this.followupService.seriesSeenList$.getValue();
-    }
+    this.followUpList = this.listFollowupsService.filterListByCriteria(ResourceType.serie, Status.vu, selected.value);
+
   }
 
   ngOnDestroy(){

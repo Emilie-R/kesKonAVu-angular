@@ -4,10 +4,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MesFilmsComponent } from './mes-films/mes-films.component';
-import { MesSeriesComponent } from './mes-series/mes-series.component';
-import { DetailFilmComponent } from './detail-film/detail-film.component';
-import { DetailSerieComponent } from './detail-serie/detail-serie.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
@@ -35,7 +31,6 @@ import { CardComponent } from './card/card.component';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { SeriesComponent } from './series/series.component';
 import { ResourceDialogComponent } from './resource-dialog/resource-dialog.component';
-import { FollowupNoteComponent } from './followup-note/followup-note.component';
 import { DetailComponent } from './detail/detail.component';
 import { RateComponent } from './rate/rate.component';
 import { AuthGuard } from './guards/auth.guard';
@@ -45,10 +40,6 @@ import { ProgressionComponent } from './progression/progression.component';
 @NgModule({
   declarations: [
     AppComponent,
-    MesFilmsComponent,
-    MesSeriesComponent,
-    DetailFilmComponent,
-    DetailSerieComponent,
     HomeComponent,
     LoginComponent,
     RegisterComponent,
@@ -58,7 +49,6 @@ import { ProgressionComponent } from './progression/progression.component';
     CardComponent,
     SeriesComponent,
     ResourceDialogComponent,
-    FollowupNoteComponent,
     DetailComponent,
     RateComponent,
     ProgressionComponent

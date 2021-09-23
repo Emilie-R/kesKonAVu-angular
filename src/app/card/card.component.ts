@@ -5,6 +5,7 @@ import { FollowUpModel, ResourceType, Status } from '../models/followup.model';
 import { ProgressionComponent } from '../progression/progression.component';
 import { RateComponent } from '../rate/rate.component';
 import { FollowupService } from '../services/followup.service';
+import { ListFollowupsService } from '../services/list-followups.service';
 
 export interface DialogData {
   followUpData:FollowUpModel;
@@ -26,7 +27,8 @@ export class CardComponent implements OnInit {
   oldNote:number=0;
 
   constructor(private dialog: MatDialog,
-    private followupService : FollowupService) { 
+    private followupService : FollowupService,
+    private listFollowupsService : ListFollowupsService) { 
   }
 
   ngOnInit(): void {
@@ -79,7 +81,12 @@ export class CardComponent implements OnInit {
             if(this.oldNote != this.followUp.note){
               this.followupService.updateFollowup(this.followUp.idFollowUp,this.followUp.note,this.followUp.status)
               .subscribe(
-                // (data)=> console.log(data)
+                (data:FollowUpModel) => {
+                    /*Mise à jour du followUp dans la liste */
+                    let newList = this.listFollowupsService.getOneFollowUpList(data.status, data.resourceType)
+                            .map((item:FollowUpModel) => item.idFollowUp == data.idFollowUp ? data : item);
+                    this.listFollowupsService.UpdateOneFollowUpList(data.status, data.resourceType, newList);
+                }
               )
               // réactualisation sauvegarde note du followUp
               this.oldNote = this.followUp.note;
@@ -109,52 +116,58 @@ export class CardComponent implements OnInit {
       this.followUp.status = Status.vu;
       // rafraichissement des BehavirSubject du service followUp$
       if(this.isMovie){
-        let listOldWishMovies = this.followupService.moviesWishList$.getValue();
+        let listOldWishMovies = this.listFollowupsService.moviesWishList$.getValue();
         let listNewWishMovies = listOldWishMovies.filter(data => data.idFollowUp != this.followUp.idFollowUp);
-        this.followupService.moviesWishList$.next(listNewWishMovies);
+        this.listFollowupsService.moviesWishList$.next(listNewWishMovies);
         // list des ajouts
-        let OldSeenMovies = this.followupService.moviesSeenList$.getValue();
+        let OldSeenMovies = this.listFollowupsService.moviesSeenList$.getValue();
         OldSeenMovies.push(this.followUp);
-        this.followupService.moviesSeenList$.next(OldSeenMovies);
+        this.listFollowupsService.moviesSeenList$.next(OldSeenMovies);
 
 
       } else {
-        let listOldWishSeries = this.followupService.seriesWishList$.getValue();
+        let listOldWishSeries = this.listFollowupsService.seriesWishList$.getValue();
         let listNewWishSeries = listOldWishSeries.filter(data => data.idFollowUp != this.followUp.idFollowUp);
-        this.followupService.seriesWishList$.next(listNewWishSeries);
+        this.listFollowupsService.seriesWishList$.next(listNewWishSeries);
         // list des ajouts
-        let OldSeenSeries = this.followupService.seriesSeenList$.getValue();
+        let OldSeenSeries = this.listFollowupsService.seriesSeenList$.getValue();
         OldSeenSeries.push(this.followUp);
-        this.followupService.seriesSeenList$.next(OldSeenSeries);
+        this.listFollowupsService.seriesSeenList$.next(OldSeenSeries);
 
       }
     } else {
       this.followUp.status = Status.avoir;
       // rafraichissement des BehavirSubject du service followUp$
       if(this.isMovie){
-        let listOldSeenMovies = this.followupService.moviesSeenList$.getValue();
+        let listOldSeenMovies = this.listFollowupsService.moviesSeenList$.getValue();
         let listNewSeenMovies = listOldSeenMovies.filter(data => data.idFollowUp != this.followUp.idFollowUp);
-        this.followupService.moviesSeenList$.next(listNewSeenMovies);
+        this.listFollowupsService.moviesSeenList$.next(listNewSeenMovies);
         // list des ajouts
-        let OldWishMovies = this.followupService.moviesWishList$.getValue();
+        let OldWishMovies = this.listFollowupsService.moviesWishList$.getValue();
         OldWishMovies.push(this.followUp);
-        this.followupService.moviesWishList$.next(OldWishMovies);
+        this.listFollowupsService.moviesWishList$.next(OldWishMovies);
 
       } else {
-        let listOldSeenSeries = this.followupService.seriesSeenList$.getValue();
+        let listOldSeenSeries = this.listFollowupsService.seriesSeenList$.getValue();
         let listNewSeenSeries = listOldSeenSeries.filter(data => data.idFollowUp != this.followUp.idFollowUp);
-        this.followupService.seriesSeenList$.next(listNewSeenSeries);
+        this.listFollowupsService.seriesSeenList$.next(listNewSeenSeries);
         // list des ajouts
-        let OldWishSeries = this.followupService.seriesWishList$.getValue();
+        let OldWishSeries = this.listFollowupsService.seriesWishList$.getValue();
         OldWishSeries.push(this.followUp);
-        this.followupService.seriesWishList$.next(OldWishSeries);
+        this.listFollowupsService.seriesWishList$.next(OldWishSeries);
 
       }
     }
 
     this.followupService.updateFollowup(this.followUp.idFollowUp,this.followUp.note,this.followUp.status)
             .subscribe(
-              // (data)=> console.log(data)
+              (data:FollowUpModel) => {
+                /*Mise à jour du followUp dans la liste */
+                let newList = this.listFollowupsService.getOneFollowUpList(data.status, data.resourceType)
+                .map((item:FollowUpModel) => item.idFollowUp == data.idFollowUp ? data : item);
+
+                this.listFollowupsService.UpdateOneFollowUpList(data.status, data.resourceType, newList);
+              }
             )
   }
 

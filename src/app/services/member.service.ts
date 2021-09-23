@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { FollowupService } from './followup.service';
+import { ListFollowupsService } from './list-followups.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class MemberService {
 
   constructor(private http: HttpClient,
               private route: Router,
-              private followupService: FollowupService ) { }
+              private listfollowupsService: ListFollowupsService ) { }
 
   loginMember(pseudo: string, password: string): Observable<any> {
     let url = "/v1/authenticate";
@@ -46,7 +47,7 @@ export class MemberService {
   logoutMember() {
     localStorage.removeItem('keskonavu-token');
     this.loggedMember$.next({});
-    this.followupService.initFollowUpLists();
+    this.listfollowupsService.initFollowUpLists();
     this.route.navigate(["/"]);
   }
 

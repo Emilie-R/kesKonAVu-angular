@@ -7,6 +7,10 @@
     <mat-spinner></mat-spinner>
 </div>
 
+<div *ngIf="listFollowupsService.listsAreLoading$ | async" class="loader">
+    <mat-spinner></mat-spinner>
+</div>
+
 <!-- SIDEBAR et Cartes Films -->
 <div class="member-content">
     <!-- Barre latérale de navigation entre séries/ films -->

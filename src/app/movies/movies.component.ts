@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
-import { FollowUpModel, ResourceType } from '../models/followup.model';
+import { FollowUpModel, ResourceType, Status } from '../models/followup.model';
 import { ResourceDialogComponent } from '../resource-dialog/resource-dialog.component';
 import { FollowupService } from '../services/followup.service';
+import { ListFollowupsService } from '../services/list-followups.service';
 
 @Component({
   selector: 'app-movies',
@@ -35,16 +36,18 @@ export class MoviesComponent implements OnInit {
   subcriptions!:[Subscription];
 
   constructor(public followupService : FollowupService,
+              public listFollowupsService : ListFollowupsService,
               private dialog : MatDialog) { }
 
   ngOnInit(): void {
     this.isMesEnvies = true;
     this.selectedSortByCriteria = this.sortByCriteria[0];
     this.selectedFilterByNote = this.filterByNote[0];
-    this.followupService.getMoviesWishListFromApi();
-
+    //this.listFollowupsService.getMoviesWishListFromApi();
+    this.listFollowupsService.getResourcesListsFromApi(ResourceType.movie);
+    
     /* Abonnement à la liste des envies */ 
-      this.followupService.moviesWishList$.subscribe(
+      this.listFollowupsService.moviesWishList$.subscribe(
         (data) => {
           // Récupère le nombre d'éléments de la liste
           this.wishListNb = data.length;
@@ -57,7 +60,7 @@ export class MoviesComponent implements OnInit {
         );
 
     /* Abonnement à la liste des déjà vus */ 
-        this.followupService.moviesSeenList$.subscribe(
+        this.listFollowupsService.moviesSeenList$.subscribe(
           (data) => {
             // Récupère le nombre d'éléments de la liste
             this.seenListNb = data.length;
@@ -70,12 +73,12 @@ export class MoviesComponent implements OnInit {
 
   onClickMesEnvies(){
     this.isMesEnvies = true;
-    this.followUpList = this.followupService.moviesWishList$.getValue();
+    this.followUpList = this.listFollowupsService.moviesWishList$.getValue();
   } 
 
   onClickDejaVus(){
     this.isMesEnvies = false;
-    this.followUpList = this.followupService.moviesSeenList$.getValue();
+    this.followUpList = this.listFollowupsService.moviesSeenList$.getValue();
   }
 
   openAddResourceDialog() {
@@ -88,45 +91,13 @@ export class MoviesComponent implements OnInit {
 
   onChangeSortByCriteria(selected:any) {
     this.selectedSortByCriteria = selected;
-    let followupListNull:Array<FollowUpModel>;
-    let followupListNotNull:Array<FollowUpModel>;
-
-    switch(selected.value){
-      case "noteDesc" :
-        /* On classe les notes null à la fin de liste */
-        followupListNull = this.followupService.moviesSeenList$.getValue().filter(a => a.note == null);
-        followupListNotNull = this.followupService.moviesSeenList$.getValue().filter(a => a.note != null);
-        this.followUpList = [...followupListNotNull.sort((a, b) => b.note - a.note), ...followupListNull];
-        break;
-      case "noteAsc" :
-        /* On classe les notes null à la fin de liste */
-        followupListNull = this.followupService.moviesSeenList$.getValue().filter(a => a.note == null);
-        followupListNotNull = this.followupService.moviesSeenList$.getValue().filter(a => a.note != null);
-        this.followUpList = [...followupListNotNull.sort((a, b) => a.note - b.note), ...followupListNull];
-        break;
-      default :
-        this.followUpList = this.followUpList.sort((a, b) => b.lastModification - a.lastModification);
-    }
+    this.followUpList = this.listFollowupsService.sortListByCriteria(ResourceType.movie, Status.vu, selected.value);
   }
 
   onChangeFilterByCriteria(selected:any) {
     this.selectedFilterByNote = selected;
-    switch(selected.value){
-      case "Top" :
-        this.followUpList = this.followupService.moviesSeenList$.getValue().filter(a => a.note === 3);
-        break;
-      case "Bien" :
-        this.followUpList = this.followupService.moviesSeenList$.getValue().filter(a => a.note === 1);
-        break;
-      case "Bof" :
-        this.followUpList = this.followupService.moviesSeenList$.getValue().filter(a => a.note === 0);
-        break;
-      case "None" :
-        this.followUpList = this.followupService.moviesSeenList$.getValue().filter( a => a.note == null );
-        break;
-      default :
-        this.followUpList = this.followupService.moviesSeenList$.getValue();
-    }
+    this.followUpList = this.listFollowupsService.filterListByCriteria(ResourceType.movie, Status.vu, selected.value);
+
   }
 
   ngOnDestroy(){

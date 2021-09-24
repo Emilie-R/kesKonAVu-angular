@@ -51,6 +51,13 @@ export class ProgressionComponent implements OnInit {
   setIsSeen() {
     this.isSeen = !this.isSeen;
   }
+    
+  onClose(): void {​
+      this.dialogRef.close();
+  }​
 
-
+  onSave(){
+    alert("Enregistrer la progression");
+    this.dialogRef.close();
+  }
 }

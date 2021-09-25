@@ -16,8 +16,8 @@
                 </mat-progress-bar>
                 <mat-card-content>
                         <div class="card-title">{{ getCutTitle() }} </div>
-                        <div *ngIf="isSerie && !isWish" [class.card-episodes]="followUp.numberUnseenEpisodes>0">
-                                {{followUp.numberUnseenEpisodes}} épisodes à voir</div>
+                        <div *ngIf="isSerie && !isWish" [class.card-episodes]="followUp.numberUnseenEpisodes>0 || followUp.numberUnseenEpisodes === 0">
+                                {{ getSerieProgressionLibelle() }} </div>
                 </mat-card-content>
         </mat-card>
 </div>

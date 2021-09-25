@@ -1,32 +1,30 @@
 <div class="d-flex flex-column align-items-center">
-    <h2>Modifier Progression</h2>
-    <h5>{{data.followUpData.title}}</h5>
+  <h2>Modifier Progression</h2>
+  <h5>{{data.followUpData.title}}</h5>
 </div>
-<mat-accordion class="example-headers-align">
-    <mat-expansion-panel *ngFor="let seasonNumber of listOfSeasonNumber">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          <mat-label>Saison {{seasonNumber}}</mat-label>
-        </mat-panel-title>
-        <mat-panel-description>
-          <mat-icon [class.vu]="isSeen">done</mat-icon>
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-  
-      <mat-label *ngFor="let element of episodeFollowUpList">
-        <div *ngIf="element.episode.seasonNumber == seasonNumber" class="d-flex">
-            <mat-label>épisode</mat-label>
-            <mat-label>{{element.episode.number}}</mat-label>
-            <mat-label>{{element.episode.title}}</mat-label>
-            <mat-label (click)="setIsSeen()"><mat-icon [class.vu]="isSeen" *ngIf="isSeen">done</mat-icon></mat-label>
-        </div>
-      </mat-label>
 
-    </mat-expansion-panel>
-  
-  </mat-accordion>
+<mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+  <!-- This is the tree node template for leaf nodes -->
+  <mat-tree-node class="episode-line" *matTreeNodeDef="let node">
+      <div class ="episode-title">Episode {{node.number}} : {{node.title}}</div>
+      <div class = "episode-seen" 
+          (click)="onClickSeen(node)"><mat-icon [class.vu]="getNodeStatus(node)">remove_red_eye</mat-icon></div>
+  </mat-tree-node>
+  <!-- This is the tree node template for expandable nodes -->
+  <mat-tree-node class="season-line" *matTreeNodeDef="let node;when: hasChild">
+      <div class ="season-title" >{{node.title}}</div>
+      <div class = "season-seen"
+            (click)="onClickSeen(node)"><mat-icon [class.vu]="getNodeStatus(node)">remove_red_eye</mat-icon></div>
+
+      <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'Toggle ' + node.name">
+        <mat-icon class="mat-icon-rtl-mirror">
+          {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+        </mat-icon>
+      </button>
+  </mat-tree-node>
+</mat-tree>
+
 <div class="d-flex justify-content-around">
-    <button mat-button (click)="onClose()" class="annuler">Annuler</button>
-    <button mat-button (click)="onSave()" class="enregistrer" >Enregistrer</button>
+  <button mat-button (click)="onClose()" class="annuler">Annuler</button>
+  <button mat-button (click)="onSave()" class="enregistrer">Enregistrer</button>
 </div>
-  

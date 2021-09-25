@@ -50,6 +50,15 @@ export class CardComponent implements OnInit {
     
   }
 
+  getSerieProgressionLibelle() {
+    if (this.followUp.numberUnseenEpisodes === 0) {
+      return "Terminé !";
+    } else {
+      return this.followUp.numberUnseenEpisodes +  " épisodes à voir";
+    }
+    
+  }
+
   goToDetailPage(){
     
     // Ouvrir une modale(boîte de dialogue) qui contient un template HTML du détail

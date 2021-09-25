@@ -22,6 +22,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatTreeModule } from '@angular/material/tree';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { MoviesComponent } from './movies/movies.component';
@@ -35,6 +36,7 @@ import { DetailComponent } from './detail/detail.component';
 import { RateComponent } from './rate/rate.component';
 import { AuthGuard } from './guards/auth.guard';
 import { ProgressionComponent } from './progression/progression.component';
+
 
 
 @NgModule({
@@ -59,8 +61,8 @@ import { ProgressionComponent } from './progression/progression.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule, MatDividerModule, MatIconModule, MatInputModule, MatCardModule, MatListModule, MatSnackBarModule,
-    MatMenuModule, MatProgressBarModule, MatDialogModule, MatProgressSpinnerModule, MatSelectModule, MatFormFieldModule,
-    MatExpansionModule,
+    MatMenuModule, MatProgressBarModule, MatDialogModule, MatProgressSpinnerModule, MatSelectModule, MatFormFieldModule, 
+    MatExpansionModule, MatTreeModule,
     ReactiveFormsModule
   ],
   providers: [{provide:HTTP_INTERCEPTORS, useClass:TokenInterceptor, multi:true},

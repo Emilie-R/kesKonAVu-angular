@@ -93,4 +93,9 @@ export class FollowupService {
     return this.http.get("/v1/progression/edit/" + id);
   }
   
+  postSerieProgression(serieProgression):Observable<any> {
+    return this.http.post("/v1/progression/save" , serieProgression)
+          .pipe(
+            map((response:any) => {return new FollowUpModel(response)} ));
+  }
 }
